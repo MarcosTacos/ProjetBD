@@ -30,3 +30,5 @@ def select_todos():
     todos = [entry[0] for entry in cursor.fetchall()]
 
     return todos
+
+

@@ -12,13 +12,10 @@ def index():
 @app.route("/add-todo/", methods=["POST"])
 def add_todo():
     data = request.json
-
     insert_todo(data["text"])
-
     response = {
         "status": 200
     }
-
     return jsonify(response)
 
 
