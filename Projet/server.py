@@ -1,5 +1,5 @@
 from flask import Flask, render_template, jsonify, request, redirect, url_for
-from database import insert_username, select_todos
+from database import insert_username, select_todos, insert_password
 
 app = Flask(__name__)
 

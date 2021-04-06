@@ -3,7 +3,7 @@ import pymysql.cursors
 connection = pymysql.connect(
     host="localhost",
     user="root",
-    password="12345",
+    password="Keto1234",
     db="lab6",
     autocommit=True
 )
@@ -20,6 +20,11 @@ cursor = connection.cursor()
 
 def insert_username(text):
     request = """INSERT INTO todo (text) VALUES ("{}");""".format(text)
+    cursor.execute(request)
+
+
+def insert_password(text):
+    request = """INSERT INTO todo (text) VALUES("{}");""".format(text)
     cursor.execute(request)
 
 
