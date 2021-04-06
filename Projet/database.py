@@ -18,7 +18,7 @@ cursor = connection.cursor()
 #cursor.execute(create_table)
 
 
-def insert_todo(text):
+def insert_username(text):
     request = """INSERT INTO todo (text) VALUES ("{}");""".format(text)
     cursor.execute(request)
 

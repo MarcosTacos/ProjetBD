@@ -1,27 +1,27 @@
 function displayNewTodo(text) {
-    var todosContainer = document.getElementById("todos-container");
+    var todosContainer = document.getElementById("username-container");
 
-    var newTodoElement = document.createElement("div");
+    var newUsername = document.createElement("div");
 
-    newTodoElement.innerHTML = text;
+    newUsername.innerHTML = text;
 
-    todosContainer.appendChild(newTodoElement);
+    todosContainer.appendChild(newUsername);
 }
 
 function onButtonClick() {
-    var inputElement = document.getElementById("todo-input");
+    var inputUsername = document.getElementById("username-input");
 
-    var newTodoText = inputElement.value;
+    var newUsername = inputUsername.value;
 
-    displayNewTodo(newTodoText)
+    displayNewTodo(newUsername)
 
-    inputElement.value = ""
+    inputUsername.value = ""
 
-    postTodo(newTodoText)
+    postUsername(newUsername)
 }
 
-function postTodo(text) {
-    postUrl = "add-todo"
+function postUsername(text) {
+    postUrl = "add-username"
 
     fetch(postUrl, {
         method: "POST",

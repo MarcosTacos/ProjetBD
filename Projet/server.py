@@ -1,5 +1,5 @@
-from flask import Flask, render_template, jsonify, request, Response
-from database import insert_todo, select_todos
+from flask import Flask, render_template, jsonify, request, redirect, url_for
+from database import insert_username, select_todos
 
 app = Flask(__name__)
 
@@ -7,13 +7,16 @@ app = Flask(__name__)
 @app.route("/")
 def index():
     return render_template("index.html")
+@app.route("/sign-in.html")
+def signin():
+    return render_template("sign-in.html")
 
 
-@app.route("/add-todo/", methods=["POST"])
-def add_todo():
+@app.route("/add-username/", methods=["POST"])
+def add_username():
     data = request.json
 
-    insert_todo(data["text"])
+    insert_username(data["text"])
 
     response = {
         "status": 200
