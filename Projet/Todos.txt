@@ -1,0 +1,15 @@
+Fonctions:
+1.Output le produit le plus vendu
+2.Output la commande la plus chere ou le nom du client qui a le plus acheter
+
+Triggers:
+1.Refuse email invalide/telephone invalide
+2.Limite du nombre d'articles a acheter ( ne reste plus de quantite )
+
+Procedures avec curseur:
+1.Historique des ventes
+2.Noms de tout les clients qui ont passer des commandes
+
+Create VIEWs:     // Pour que les requetes qu'on fait beaucoup soient plus rapide exemple si on a des requetes plus complexes (GROUP BY, COUNT etc)
+1.Pour confirmer sign-in,  on cree une VIEW qui SELECT email, mot de passe FROM Client
+2.Pour la securite du client    // GRANT ACCESS TO VIEW
