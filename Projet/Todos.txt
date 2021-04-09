@@ -1,3 +1,5 @@
+# /////////////// ********************   TODOS:       ********************* ////////////////////////////////////////
+
 Fonctions:
 1.Output le produit le plus vendu
 2.Output la commande la plus chere ou le nom du client qui a le plus acheter
@@ -13,3 +15,23 @@ Procedures avec curseur:
 Create VIEWs:     // Pour que les requetes qu'on fait beaucoup soient plus rapide exemple si on a des requetes plus complexes (GROUP BY, COUNT etc)
 1.Pour confirmer sign-in,  on cree une VIEW qui SELECT email, mot de passe FROM Client
 2.Pour la securite du client    // GRANT ACCESS TO VIEW
+
+
+************************************* Modifications a faire ************************************************************
+
+# Table Panier :
+# Normaliser la relation (FK) Panier.ID_produit/Commande.ID_produit
+# Mettre a 0 Panier.quantite en faisant un select sur Commande.statut_commande == 1 pour chaque Client.ID_client different
+# ***Remplacer ID_commande par ID_panier ?
+
+
+# Table Commande:
+# Mettre Commande.prix_commande = Produit.prix pour chaque relation (ID_client, ID_commande) uniques
+
+
+# Table Paiement:
+# Mettre Paiement.montant_total = Commande.prix_commande * 15% pour chaque relation unique (ID_paiement, ID_commande)
+
+# General:
+# Finir la normalisation des FK entre les tables
+# S'assurer que les valeurs des FK concordent entre les tables ayant des contraintes

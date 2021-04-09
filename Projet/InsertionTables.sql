@@ -1,23 +1,3 @@
-# /////////////// ********************   TODOS:       ********************* ///////////////////////
-
-# Table Panier :
-# Normaliser la relation (FK) Panier.ID_produit/Commande.ID_produit
-# Mettre a 0 Panier.quantite en faisant un select sur Commande.statut_commande == 1 pour chaque Client.ID_client different
-# ***Remplacer ID_commande par ID_panier ?
-
-
-# Table Commande:
-# Mettre Commande.prix_commande = Produit.prix pour chaque relation (ID_client, ID_commande) uniques
-
-
-# Table Paiement:
-# Mettre Paiement.montant_total = Commande.prix_commande * 15% pour chaque relation unique (ID_paiement, ID_commande)
-
-# General:
-# Finir la normalisation des FK entre les tables
-# S'assurer que les valeurs des FK concordent entre les tables ayant des contraintes
-
-
 # ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
