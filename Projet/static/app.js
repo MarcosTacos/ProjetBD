@@ -1,27 +1,57 @@
-function displayNewTodo(text) {
-    var todosContainer = document.getElementById("username-container");
 
-    var newUsername = document.createElement("div");
+// alert("app.js");
+const cors = require("cors");
+app.use(cors())
 
-    newUsername.innerHTML = text;
-
-    todosContainer.appendChild(newUsername);
+// Register click goes to sign-in page
+function onButtonRegisterClick()
+{
+    // alert("Register");
+    window.location.href = "sign-in.html";
 }
 
-function onButtonClick() {
-    var inputUsername = document.getElementById("username-input");
 
-    var newUsername = inputUsername.value;
+// Client login
+function onButtonLoginClick()
+{
+    var inputElementEmail = document.getElementById("email-input");
+    var email = inputElementEmail.value;
+    var inputElementPassword = document.getElementById("password-input");
+    var password = inputElementPassword.value;
 
-    displayNewTodo(newUsername)
-
-    inputUsername.value = ""
-
-    postUsername(newUsername)
+    alert(email+" "+password);
+    postLogin(email, password)
+    inputElementEmail.value = ""
+    inputElementPassword.value = ""
 }
 
-function postUsername(text) {
-    postUrl = "add-username"
+function postLogin(email, password) {
+    // postUrl = "login"
+    postUrl = "/loginUser";
+
+    fetch(postUrl, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            email: email,
+            password: password
+        })
+    }).then(function(response) {
+        alert("message1"+JSON.stringify(response));
+        return response.json()
+    }).then(function(data) {
+        alert("message2"+JSON.stringify(data))
+        console.log("worked")
+    })
+}
+
+
+
+
+function postTodo(text) {
+    postUrl = "add-todo"
 
     fetch(postUrl, {
         method: "POST",
@@ -50,4 +80,14 @@ function fetchTodos() {
             displayNewTodo(todo);
         }
     })
+}
+
+function displayNewTodo(text) {
+    var todosContainer = document.getElementById("todos-container");
+
+    var newTodoElement = document.createElement("div");
+
+    newTodoElement.innerHTML = text;
+
+    todosContainer.appendChild(newTodoElement);
 }

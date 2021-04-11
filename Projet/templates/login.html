@@ -1,19 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>Connexion</title>
+    <title>Connection</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="../static/signUp.js"></script>
+    <script src = "../static/app.js"></script>
 </head>
 <body>
     <h1>
         Entrez vos informations de compte:
     </h1>
-    <input id="username-input" type="text" placeholder="Nom d'utilisateur"/>
-    <input id="password-input" type="text" placeholder="Mot de passe"/>
-    <button type="button" onclick="onButtonClick()">Se connecter</button>
+
+<form id="form" action="/loginUser" method="post">
+    <input id="email-input" type="email" name = "email" placeholder="Email"/>
+    <input id="password-input" type="password" name = "password" placeholder="Mot de passe"/>
+    <button class="btn btn-lg btn-primary btn-block" type="button" onclick="onButtonLoginClick()">Se connecter</button>
+</form>
+
     <div>
         Vous n'avez pas de compte? Enregistrez-vous ici!
     </div>
-    <button type="button" onclick="onButtonClick()">S'enregistrer</button>
+
+<p>
+    <a href= "signIn" >
+        <button class="btn btn-lg btn-primary btn-block" type="button" onclick="onButtonRegisterClick()">S'enregistrer</button>
+    </a>
+</p>
+
+<!--<script>-->
+<!--function onButtonRegisterClick(){window.location.href = "sign-in.html";}-->
+<!--</script>-->
+
 </body>
 </html>
+
