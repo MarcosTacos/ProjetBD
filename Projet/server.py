@@ -1,12 +1,20 @@
-
-
+import csv
 from flask import Flask, render_template, jsonify, request, Response, json
 from flask_bootstrap import Bootstrap
 from flask_nav import Nav
 from flask_cors import CORS
+import pymysql.cursors
+from database import hash_password, verify_password, insert_user, check_user_password, import_from_csv
 
 
-# from database import insert_todo, select_todos
+connection = pymysql.connect(host='localhost',
+                             user='root',
+                             password='***',
+                             db='BucketList',
+                             autocommit=True,
+                             charset='utf8mb4',
+                             cursorclass=pymysql.cursors.DictCursor)
+cursor = connection.cursor()
 
 app = Flask(__name__)
 CORS(app)
@@ -26,9 +34,22 @@ def login():
 
 @app.route('/loginUser', methods=['POST'])
 def loginUser():
-    user = request.form['email'];
-    password = request.form['password'];
-    return json.dumps({'status':'OK','email':user,'password':password});
+    if request.method == 'POST':
+        email = request.form['email'];
+        password = request.form['password'];
+        password = hash_password(password)
+        try:
+            with connection.cursor() as cursor:
+                query = "INSERT INTO testing (email, password) VALUES (%s, %s)"
+                cursor.execute(query, (email, password))
+                connection.commit()
+                cursor.close()
+        finally:
+            cursor.close()
+            return "CA MARCHE BRO"
+    else:
+        return "MARCHE PAS"
+
 
 @app.route('/produits')
 def products():
@@ -37,6 +58,7 @@ def products():
 @app.route('/panier')
 def cart():
     return render_template('cart.html')
+
 
 
 if __name__ == "__main__":

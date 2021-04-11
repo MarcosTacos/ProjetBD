@@ -15,3 +15,7 @@ $(function onButtonLoginClick(){
 		});
 	});
 });
+
+
+// <script type=text/javascript src="{{
+//   url_for('static', filename='signUp.js') }}"></script>
