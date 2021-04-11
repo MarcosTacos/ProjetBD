@@ -6,7 +6,7 @@ from passlib.handlers.sha2_crypt import sha256_crypt
 
 connection = pymysql.connect(host='localhost',
                              user='root',
-                             password='sterilite27',
+                             password='',
                              db='BucketList',
                              autocommit=True,
                              charset='utf8mb4',

@@ -9,7 +9,7 @@ from database import hash_password, verify_password, insert_user, check_user_pas
 
 connection = pymysql.connect(host='localhost',
                              user='root',
-                             password='sterilite27',
+                             password='',
                              db='BucketList',
                              autocommit=True,
                              charset='utf8mb4',
