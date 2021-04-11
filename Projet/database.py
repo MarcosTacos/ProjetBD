@@ -1,34 +1,37 @@
-import pymysql.cursors
+from passlib.hash import sha256_crypt
+import csv
+import pymysql
 
-connection = pymysql.connect(
-    host="localhost",
-    user="root",
-    password="12345",
-    db="lab6",
-    autocommit=True
-)
-
+connection = pymysql.connect(host="localhost", user="root", password="mypwd", db="mydb", autocommit=True)
 cursor = connection.cursor()
 
-# Ceci est pour créer votre table pour la première fois. idéalement, ce ne serait pas dans ce fichier, car vous ne voulez pas que cela soit exécuté à chaque fois
-# Vous pourriez par exemple avoir un fichier python init.py qui contient toutes vos fonctiond d'initialisation pour préparer l'application avant son lancement
-# (création de tables, insertion de tuples, etc.)
 
-#create_table = "CREATE TABLE todo(id integer AUTO_INCREMENT, text varchar(400), PRIMARY KEY(id))"
-#cursor.execute(create_table)
+def hash_password(password):
+    return sha256_crypt.hash(password)
 
 
-def insert_todo(text):
-    request = """INSERT INTO todo (text) VALUES ("{}");""".format(text)
+def verify_password(password, actual):
+    return sha256_crypt.verify(password, actual)
+
+
+def insert_user(email, password):
+    hashed_password = hash_password(password)
+    request = """INSERT INTO users (email, password) VALUES ('{}', '{}')""".format(email, hashed_password)
     cursor.execute(request)
 
 
-def select_todos():
-    request = "SELECT text FROM todo;"
+def check_user_password(email, password):
+    request = """SELECT password FROM users WHERE email = '{}'""".format(email)
     cursor.execute(request)
-
-    todos = [entry[0] for entry in cursor.fetchall()]
-
-    return todos
+    hashed_password = cursor.fetchone()[0]
+    return verify_password(password, hashed_password)
 
 
+def import_from_csv():
+    with open("users.csv") as file:
+        reader = csv.reader(file)
+        for line in reader:
+            email = line[0]
+            password = line[1]
+            request = """INSERT INTO users (email, password) VALUES ('{}', '{}')""".format(email, password)
+            cursor.execute(request)

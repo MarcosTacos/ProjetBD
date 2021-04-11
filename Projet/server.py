@@ -1,35 +1,44 @@
-from flask import Flask, render_template, jsonify, request, Response
-from database import insert_todo, select_todos
+
+
+from flask import Flask, render_template, jsonify, request, Response, json
+from flask_bootstrap import Bootstrap
+from flask_nav import Nav
+from flask_cors import CORS
+
+
+# from database import insert_todo, select_todos
 
 app = Flask(__name__)
-
+CORS(app)
 
 @app.route("/")
 def index():
     return render_template("index.html")
 
-
-@app.route("/add-todo/", methods=["POST"])
-def add_todo():
-    data = request.json
-    insert_todo(data["text"])
-    response = {
-        "status": 200
-    }
-    return jsonify(response)
+@app.route('/signIn')
+def signIn():
+    return render_template('sign-in.html')
 
 
-@app.route("/todos/", methods=["GET"])
-def get_todos():
-    todos = select_todos()
+@app.route('/login')
+def login():
+    return render_template('login.html')
 
-    response = {
-        "status": 200,
-        "todos": todos
-    }
+@app.route('/loginUser', methods=['POST'])
+def loginUser():
+    user = request.form['email'];
+    password = request.form['password'];
+    return json.dumps({'status':'OK','email':user,'password':password});
 
-    return jsonify(response)
+@app.route('/produits')
+def products():
+    return render_template('products.html')
+
+@app.route('/panier')
+def cart():
+    return render_template('cart.html')
 
 
 if __name__ == "__main__":
     app.run()
+
