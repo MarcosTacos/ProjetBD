@@ -1,21 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+{% extends "base.html" %}
+{% block title %}BD-SHOP{% endblock %}
 
+{% block content %}
 <head>
 <!--<link rel="stylesheet" href="../CSS/sign-in.css" type="text/css" />-->
-    <link rel="stylesheet" href="../static/sign-in.css" type="text/css" />
+    <link href="../static/sign-in.css" rel="stylesheet" type="text/css"/>
 </head>
 
 <body>
-<!--<h2> test css </h2>-->
-
-<!--    Bouton retour vers login si on trouve que le email entre est deja dans la DB-->
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-<!--        <div class="container">-->
-                </button>
-                <a class="navbar-brand" href="/">Retour vers la page d'acceuil</a>
-            </div>
-        </nav>
 
 
 <!--        <div class="container">-->
@@ -86,3 +80,4 @@
 </div>
 </body>
 </html>
+{% endblock %}

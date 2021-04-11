@@ -6,7 +6,7 @@ from passlib.handlers.sha2_crypt import sha256_crypt
 
 connection = pymysql.connect(host='localhost',
                              user='root',
-                             password='***',
+                             password='sterilite27',
                              db='BucketList',
                              autocommit=True,
                              charset='utf8mb4',
@@ -49,8 +49,8 @@ def import_from_csv():
 # hashed = hash_password(pwd)               //  encrypts password
 # print(verify_password(pwd, hashed))      // returns true if match
 
-email = "test@mail.com"
-password = "ethop"
+# email = "test@mail.com"
+# password = "ethop"
 # insert_user(email, password)  // inserts into DB email and hashed password
 
 # print(check_user_password(email, password))   // prints true if password and dictionary value hashed_password match

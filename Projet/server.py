@@ -9,7 +9,7 @@ from database import hash_password, verify_password, insert_user, check_user_pas
 
 connection = pymysql.connect(host='localhost',
                              user='root',
-                             password='***',
+                             password='sterilite27',
                              db='BucketList',
                              autocommit=True,
                              charset='utf8mb4',
@@ -26,7 +26,6 @@ def index():
 @app.route('/signIn')
 def signIn():
     return render_template('sign-in.html')
-
 
 @app.route('/login')
 def login():
@@ -59,7 +58,9 @@ def products():
 def cart():
     return render_template('cart.html')
 
-
+@app.route('/promotions')
+def promo():
+    return render_template('promos.html')
 
 if __name__ == "__main__":
     app.run()
