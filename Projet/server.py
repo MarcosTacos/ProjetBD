@@ -1,15 +1,15 @@
 import csv
 from flask import Flask, render_template, jsonify, request, Response, json
-from flask_bootstrap import Bootstrap
-from flask_nav import Nav
-from flask_cors import CORS
+#from flask_bootstrap import Bootstrap
+#from flask_nav import Nav
+#from flask_cors import CORS
 import pymysql.cursors
 from database import hash_password, verify_password, insert_user, check_user_password, import_from_csv
 
 
 connection = pymysql.connect(host='localhost',
                              user='root',
-                             password='',
+                             password='Keto1234',
                              db='BucketList',
                              autocommit=True,
                              charset='utf8mb4',
