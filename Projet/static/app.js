@@ -4,48 +4,48 @@ const cors = require("cors");
 app.use(cors())
 
 // Register click goes to sign-in page
-function onButtonRegisterClick()
-{
-    // alert("Register");
-    window.location.href = "sign-in.html";
-}
+// function onButtonRegisterClick()
+// {
+//     // alert("Register");
+//     window.location.href = "sign-in.html";
+// }
 
-
-// Client login
-function onButtonLoginClick()
-{
-    var inputElementEmail = document.getElementById("email-input");
-    var email = inputElementEmail.value;
-    var inputElementPassword = document.getElementById("password-input");
-    var password = inputElementPassword.value;
-
-    alert(email+" "+password);
-    postLogin(email, password)
-    inputElementEmail.value = ""
-    inputElementPassword.value = ""
-}
-
-function postLogin(email, password) {
-    // postUrl = "login"
-    postUrl = "/loginUser";
-
-    fetch(postUrl, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            email: email,
-            password: password
-        })
-    }).then(function(response) {
-        alert("message1"+JSON.stringify(response));
-        return response.json()
-    }).then(function(data) {
-        alert("message2"+JSON.stringify(data))
-        console.log("worked")
-    })
-}
+//
+// // Client login
+// function onButtonLoginClick()
+// {
+//     var inputElementEmail = document.getElementById("email-input");
+//     var email = inputElementEmail.value;
+//     var inputElementPassword = document.getElementById("password-input");
+//     var password = inputElementPassword.value;
+//
+//     alert(email+" "+password);
+//     postLogin(email, password)
+//     inputElementEmail.value = ""
+//     inputElementPassword.value = ""
+// }
+//
+// function postLogin(email, password) {
+//     // postUrl = "login"
+//     postUrl = "/loginUser";
+//
+//     fetch(postUrl, {
+//         method: "POST",
+//         headers: {
+//             "Content-Type": "application/json"
+//         },
+//         body: JSON.stringify({
+//             email: email,
+//             password: password
+//         })
+//     }).then(function(response) {
+//         alert("message1"+JSON.stringify(response));
+//         return response.json()
+//     }).then(function(data) {
+//         alert("message2"+JSON.stringify(data))
+//         console.log("worked")
+//     })
+// }
 
 
 

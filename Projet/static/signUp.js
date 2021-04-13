@@ -3,7 +3,7 @@ $(function onButtonLoginClick(){
 		var email = $('#email-input').val();
 		var password = $('#password-input').val();
 		$.ajax({
-			url: '/loginUser',
+			url: '/connection',
 			data: $('form').serialize(),
 			type: 'POST',
 			success: function onButtonLoginClick(response){
