@@ -18,17 +18,17 @@ show triggers;
 
 
 # Fonction qui prend en argument ID_client et retourne le nom complet du client
+SET GLOBAL log_bin_trust_function_creators = 1;
 DELIMITER //
-DROP FUNCTION IF EXISTS TrouverClient;
-CREATE FUNCTION
-    TrouverClient(ID_client INT(50))
-    RETURNS VARCHAR(100)
-    DETERMINISTIC
+CREATE FUNCTION TrouverClient(IDClient INTEGER) RETURNS VARCHAR(50)
 BEGIN
-DECLARE @NomClient VARCHAR(100);
-SET @NomClient = (SELECT COUNT (DISTINCT nom_complet) FROM Client WHERE nom_complet = @NomClient);
-RETURN @NomClient;
-END; //
+    DECLARE NomClient VARCHAR(50);
+    IF EXISTS (SELECT * FROM CLIENT C WHERE C.ID_client = IDClient) THEN
+        SET NomClient = (SELECT DISTINCT C.nom_complet  FROM CLIENT C WHERE C.ID_client = IDClient);
+        #ELSE SET  NomClient = 'not found';
+    END IF;
+    RETURN NomClient;
+END //
 DELIMITER ;
 select TrouverClient(5);
 
@@ -39,9 +39,9 @@ select TrouverClient(5);
 DELIMITER //
 CREATE PROCEDURE HistoriqueParClient (IN IDClient INT)
 BEGIN
-SELECT C.nom_complet, M.ID_commande, P.montant_total, L.date_livraison, L.statut_livraison
-FROM Client C, Commande M, Livraison L, Paiement P
-WHERE IDClient = C.ID_client AND C.ID_client = M.ID_client AND L.ID_commande = M.ID_commande;
+    SELECT C.nom_complet, M.ID_commande, M.prix_commande, L.date_livraison, L.statut_livraison
+    FROM Client C, Commande M, Livraison L
+    WHERE IDClient = C.ID_client AND C.ID_client = M.ID_client AND L.ID_commande = M.ID_commande;
 END //
 DELIMITER ;
 call HistoriqueParClient(66);

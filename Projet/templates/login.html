@@ -1,38 +1,70 @@
-<!DOCTYPE html>
-<html lang="en">
+
+{% extends "base.html" %}
+{% block title %}BD-SHOP{% endblock %}
+
+{% block content %}
 
 <head>
-    <meta charset="UTF-8">
-    <title>Connection</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-    <script src="../static/signUp.js"></script>
-    <script src = "../static/app.js"></script>
+    <style>
+        body,html{
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            background: #e74c3c !important;
+        }
+    </style>
 </head>
-<body>
-    <h1>
-        Entrez vos informations de compte:
-    </h1>
 
-<form id="form" action="/loginUser" method="post">
-    <input id="email-input" type="email" name = "email" placeholder="Email"/>
-    <input id="password-input" type="password" name = "password" placeholder="Mot de passe"/>
-    <button class="btn btn-lg btn-primary btn-block" type="button" onclick="onButtonLoginClick()">Se connecter</button>
-</form>
+<div align = "center">
+<h1>
+    Connectez-vous !
+</h1>
 
-    <div>
-        Vous n'avez pas de compte? Enregistrez-vous ici!
+<div class = "col-md-4">
+
+<form id="form" class = "form-horizontal" action="/connection" method="post">
+
+<br/>
+    <div class="form-group">
+        <input id="email-input" type="email" name = "email" placeholder="Email" size = 48/>
     </div>
 
-<p>
-    <a href= "signIn" >
-        <button class="btn btn-lg btn-primary btn-block" type="button" onclick="onButtonRegisterClick()">S'enregistrer</button>
-    </a>
-</p>
+    <div class = "form-group">
+        <input id="password-input" type="password" name = "password" placeholder="Mot de passe" size = 48/>
+    </div>
+<br/>
 
+    <button class="btn btn-md btn-primary btn-block" type="submit" onclick="onButtonLoginClick()">Connexion</button>
+    <br/>
+
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="form1" checked/>
+        <label class="form-check-label" for="form1"> Sauvegarder </label>
+    </div>
+
+    <div class="col">
+        <a href="parametres">Mot de passe oublie?</a>
+    </div>
+
+    <br/><br/><br/>
+<div>
+    <a href= "signIn" >
+    <p style="color:black">
+    Vous n'avez pas de compte? Enregistrez-vous ici!
+    </p>
+        <button class="btn btn-md btn-primary btn-block" type="button" onclick="onButtonRegisterClick()">Inscription</button>
+    </a>
+</div>
+
+    </form>
+    </div>
+    </div>
+</div>
 <!--<script>-->
 <!--function onButtonRegisterClick(){window.location.href = "sign-in.html";}-->
 <!--</script>-->
 
-</body>
-</html>
+
+{% endblock %}
 

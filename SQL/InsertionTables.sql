@@ -213,26 +213,27 @@ insert into Produit (ID_produit, nom_du_produit, description, ID_typeProduit, pr
 
 
 
-#  ******************************************************************  INSERTIONS TABLE PANIER *****************************************************************************************
+-- #  ******************************************************************  INSERTIONS TABLE PANIER *****************************************************************************************
 
-# - Panier est specifique a un seul clientID = un panier par client.
-# Change le ID-Client et ID-PRODUIT manuellement pour faire plusieurs INSERT et arriver a 200 records.
-# Remarque , ID-Commande NOT DECLARED == AUTO_INCREMENT
-insert into Panier (quantite, ID_client, ID_produit) SELECT RAND()*(3-1)+1, ID_Client, ID_Produit FROM Client C, Produit P
+-- # - Panier est specifique a un seul clientID = un panier par client.
+-- # Change le ID-Client et ID-PRODUIT manuellement pour faire plusieurs INSERT et arriver a 200 records.
+-- # Remarque , ID-Commande NOT DECLARED == AUTO_INCREMENT
+insert into Panier (quantite, ID_client, ID_produit) SELECT RAND()*(3-1)+1, ID_Client, ID_Produit
+FROM Client C, Produit P
 WHERE ID_Client between 95 and 99 AND ID_Produit between 75 and 99;
 
 select * from Panier;
 
 
-#  ******************************************************************  INSERTIONS TABLE COMMANDE  *****************************************************************************************
+-- #  ******************************************************************  INSERTIONS TABLE COMMANDE  *****************************************************************************************
 
-# Changer manuellement Prix Commande et statut avec plusiers INSERT pour avoir 200 tuples.
-# Remarque , ID-Livraison NOT DECLARED == AUTO_INCREMENT
+-- # Changer manuellement Prix Commande et statut avec plusiers INSERT pour avoir 200 tuples.
+-- # Remarque , ID-Livraison NOT DECLARED == AUTO_INCREMENT
 insert into Commande (ID_commande, prix_commande, statut_commande, ID_client) SELECT P.ID_commande, Pr.prix , RAND()*(1), P.ID_client from Panier P, Produit Pr;
 
 select * from Commande;
 
-#  ******************************************************************  INSERTIONS TABLE PAIEMENT  *****************************************************************************************
+-- #  ******************************************************************  INSERTIONS TABLE PAIEMENT  *****************************************************************************************
 insert into Paiement (ID_paiement, mode_paiement, montant_total, ID_commande, ID_client) SELECT C.ID_Paiement, 'americanexpress', RAND()*(300-180)+180, C.ID_commande, C.ID_client FROM Commande C
 WHERE ID_commande = 125;
 insert into Paiement (ID_paiement, mode_paiement, montant_total, ID_commande, ID_client) SELECT C.ID_Paiement, 'VISA', RAND()*(300-180)+180, C.ID_commande, C.ID_client FROM Commande C, Produit P
@@ -243,19 +244,19 @@ WHERE ID_Client = 98;
 select * from Paiement;
 select SUM(P.quantite*Pr.prix) AS Total from Produit Pr, Panier P;
 
-#  ******************************************************************  INSERTIONS TABLE LIVRAISON *****************************************************************************************
-# ID_Livraison est AUTO_INCREMENT + PRIMARY KEY, donc a ne pas declarer :
-# toutes les visa avec statut 0
+-- #  ******************************************************************  INSERTIONS TABLE LIVRAISON *****************************************************************************************
+-- # ID_Livraison est AUTO_INCREMENT + PRIMARY KEY, donc a ne pas declarer :
+-- # toutes les visa avec statut 0
 insert into Livraison (date_livraison, statut_livraison, ID_commande, ID_paiement)
 SELECT CURDATE() + 5 , 0, C.ID_commande, PA.ID_paiement FROM Commande C, Paiement PA WHERE C.ID_commande = PA.ID_commande
 AND PA.mode_paiement = 'visa';
 
-# toutes les mastercard avec statut 1
+-- # toutes les mastercard avec statut 1
 insert into Livraison (date_livraison, statut_livraison, ID_commande, ID_paiement)
 SELECT CURDATE() + 5 , 1, C.ID_commande, PA.ID_paiement FROM Commande C, Paiement PA WHERE C.ID_commande = PA.ID_commande
 AND PA.mode_paiement = 'mastercard';
 
-# toutes les americanexpress avec statut 2
+-- # toutes les americanexpress avec statut 2
 insert into Livraison (date_livraison, statut_livraison, ID_commande, ID_paiement)
 SELECT CURDATE() + 5 , 2, C.ID_commande, PA.ID_paiement FROM Commande C, Paiement PA WHERE C.ID_commande = PA.ID_commande
 AND PA.mode_paiement = 'americanexpress';

@@ -24,11 +24,11 @@ body {
     color: black;
 }
 
-/*.form-group input {*/
-/*    color: aliceblue;*/
-/*     font-weight: bold;*/
-/*    opacity: 0;*/
-/*}*/
+.form-group input {
+    color: aliceblue;
+     font-weight: bold;
+    opacity: 0;
+}
 
 .btn{
   background-color: white;
