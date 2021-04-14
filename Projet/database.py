@@ -55,7 +55,7 @@ def listOfEmails():
 
 
 def verifyEmail(email):
-    if (re.search(regex, email)):
+    if re.search(regex, email):
         return True  # returns true if email valid
     return False  # returns false if email invalid
 
