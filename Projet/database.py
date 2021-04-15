@@ -9,7 +9,7 @@ regex = '^(\w|\.|\_|\-)+[@](\w|\_|\-|\.)+[.]\w{2,3}$'
 
 connection = pymysql.connect(host='localhost',
                              user='root',
-                             password='',
+                             password='sterilite27',
                              db='test',
                              autocommit=True,
                              charset='utf8mb4',
