@@ -7,7 +7,7 @@ from database import insert_user, check_user_password, listOfEmails, verifyEmail
 
 connection = pymysql.connect(host='localhost',
                              user='root',
-                             password='sterilite27',
+                             password='',
                              db='test',
                              autocommit=True,
                              charset='utf8mb4',
