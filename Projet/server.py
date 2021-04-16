@@ -47,6 +47,7 @@ def loginUser():
         email = request.form['email']
         password = request.form['password']
         nom = getUserName(email)
+        session['test'] = nom
         try:
             if not check_user_password(email, password):
                 flash('Email ou mot de passe incorrect', "warning")
@@ -65,6 +66,7 @@ def loginUser():
 @login_required
 def logOut():
     session.pop('email', None)
+    session.pop('test', None)
     flash("Vous avez ete deconnecte", "warning")
     logout_user()
     return redirect(url_for('login'))
@@ -120,6 +122,7 @@ def products():
 
 
 @app.route('/panier')
+@login_required
 def cart():
     return render_template('cart.html')
 

@@ -19,10 +19,16 @@
     <title>PROMOTIONS</title>
 </head>
 <body>
+
+    {% if session['test']%}
+    <h3>Bonjour {{session['test']}}, </h3>
+{% endif %}
+
 <h1>
     Changez vos parametres de compte!
 </h1>
 <div id="products-container">
+
 
 </div>
 </body>

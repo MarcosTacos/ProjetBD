@@ -1,5 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+{% extends "base.html" %}
+{% block title %}BD-SHOP{% endblock %}
+
+{% block content %}
+
 <head>
     <style>
         body,html{
@@ -11,14 +16,20 @@
         }
     </style>
     <meta charset="UTF-8">
-    <title>PANIER</title>
+    <title>PRODUITS A ACHETER</title>
 </head>
+
+{% if session['test']%}
+    <h3>Bonjour {{session['test']}}, </h3>
+{% endif %}
+
 <body>
     <h1>
-        PRODUITS A ACHETER!
+        Voici nos nouveaux produits !
     </h1>
     <div id="products-container">
 
     </div>
 </body>
 </html>
+{% endblock %}
