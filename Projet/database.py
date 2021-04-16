@@ -25,6 +25,38 @@ def verify_hashed_password(password, actual):
     return sha256_crypt.verify(password, actual)
 
 
+def testID(email):
+    request = """SELECT ID_client FROM Client WHERE email = '{}'""".format(email)
+    cursor.execute(request)
+    cursor.fetchall()["ID_client"]
+
+#TODO aller chercher le id_client pour nous donner les informations du client
+def getUserInfo(id_client):
+    request = """SELECT C.nom, C.email, C.telephone, C.adresse, C.mot_de_passe FROM client C WHERE C.ID_client = '{}'""".format(id_client)
+
+
+
+def changerSettings(nom=None, adresse=None, telephone=None, email=None, password=None):
+
+    if nom is not None:
+        request1 = """ UPDATE client C set C.nom = '{}' WHERE C.ID_client = '{}'""".format(nom, testID(session))
+        cursor.execute(request1)
+    if adresse is not None:
+        request2 = """ UPDATE client C set C.adresse = '{}'  WHERE C.ID_client = '{}'""".format(adresse, )
+        cursor.execute(request2)
+    if telephone is not None:
+        request3 = """ UPDATE client C set C.telephone = '{}' WHERE C.ID_client = '{}'""".format(telephone, )
+        cursor.execute(request3)
+    if email is not None:
+        request4 = """ UPDATE client  C set  C.email= '{}' WHERE C.ID_client = '{}'""".format(email, )
+        cursor.execute(request4)
+    if password is not None:
+        hashed_password = hash_password(password)
+        request5 = """ UPDATE client C set C.password = '{}' WHERE C.ID_client = '{}'}""".format(hashed_password, )
+        cursor.execute(request5)
+
+
+
 def insert_user(nom, email, telephone, adresse, password):
     hashed_password = hash_password(password)
     request = """INSERT INTO Client (nom_complet, email, telephone, adresse, mot_de_passe) 
@@ -58,6 +90,8 @@ def verifyEmail(email):
     if re.search(regex, email):
         return True  # returns true if email valid
     return False  # returns false if email invalid
+
+
 
 
 def verifyPassword(password):  # returns true if password valid

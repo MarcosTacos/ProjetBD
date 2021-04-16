@@ -1,6 +1,7 @@
 import csv
 from flask import Flask, render_template, jsonify, request, Response, json, redirect, url_for, flash
 from flask_bootstrap import Bootstrap
+from flask_login import LoginManager, UserMixin, login_required, login_user, logout_user
 from flask_nav import Nav
 from flask_cors import CORS
 import pymysql.cursors
@@ -20,6 +21,74 @@ cursor = connection.cursor()
 
 app = Flask(__name__)
 CORS(app)
+
+# flask-login
+login_manager = LoginManager()
+login_manager.init_app(app)
+login_manager.login_view = "connection"
+
+
+class User(UserMixin):
+
+    def __init__(self, id):
+        self.id = id
+        self.name = "user" + str(id)
+        self.password = self.name + "_secret"
+
+    def __repr__(self):
+        return "%d/%s/%s" % (self.id, self.name, self.password)
+
+
+
+
+@login_manager.user_loader
+def load_user(userid):
+    return User(userid)
+
+
+@app.route('/done', methods=['POST'])
+def changer_parametres():
+    #TODO aller chercher l'ancien tuple du client
+    #TODO dans chaque if statement de la requests post, lorsque varable = None, mettre l'ancienne variable au lieu de la nouvelle
+    if request.method == "POST":
+        name = request.form.get('name', None)
+        if name is None:
+            print('here')
+        email = request.form.get('email', None)
+        if email is None:
+            email = 'etienne@gmail.com'
+
+        telephone = request.form.get('telephone', None)
+        if telephone is None:
+            print('here3')
+        adresse = request.form.get('adresse', None)
+        if adresse is None:
+            print('here4')
+        motdepasse = request.form.get('motdepasse', None)
+        if motdepasse is None:
+            motdepasse = 'Keto123456'
+
+        try:
+            if email in listOfEmails():
+                flash('Email incorrect', "warning")
+                return redirect(url_for('settings'))
+
+            elif not verifyEmail(email):
+                flash("Votre email {} est invalide".format(email), "warning")
+                return redirect(url_for('settings'))
+
+            elif not verifyPassword(motdepasse)[0]:
+                flash(verifyPassword(motdepasse)[1][0], verifyPassword(motdepasse)[1][1])
+                return redirect(url_for('settings'))
+            else:
+                return redirect(url_for('login'))
+        finally:
+            cursor.close()
+
+
+@app.route('/parametres')
+def settings():
+    return render_template('settings.html')
 
 
 @app.route("/")
@@ -93,11 +162,6 @@ def cart():
 @app.route('/promotions')
 def promotions():
     return render_template('promos.html')
-
-
-@app.route('/parametres')
-def settings():
-    return render_template('settings.html')
 
 
 if __name__ == "__main__":
