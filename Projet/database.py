@@ -9,7 +9,7 @@ regex = '^(\w|\.|\_|\-)+[@](\w|\_|\-|\.)+[.]\w{2,3}$'
 
 connection = pymysql.connect(host='localhost',
                              user='root',
-                             password='Keto1234',
+                             password='12345',
                              db='testprojet',
                              autocommit=True,
                              charset='utf8mb4',
@@ -23,53 +23,6 @@ def hash_password(password):
 
 def verify_hashed_password(password, actual):
     return sha256_crypt.verify(password, actual)
-
-
-def testID(email):
-    request = """SELECT ID_client FROM Client WHERE email = '{}'""".format(email)
-    cursor.execute(request)
-    cursor.fetchall()["ID_client"]
-
-#TODO aller chercher le id_client pour nous donner les informations du client
-
-# def getUserInfo(id_client):
-#     request = """SELECT C.nom, C.email, C.telephone, C.adresse, C.mot_de_passe FROM client C WHERE C.ID_client = '{}'""".format(id_client)
-
-
-def getname(id_client):
-    request = """SELECT nom_complet FROM client WHERE ID_client = '{}'""".format(id_client)
-    cursor.execute(request)
-    return cursor.fetchall()[0]["nom_complet"]
-
-
-def getadresse(id_client):
-    request = """SELECT adresse FROM client WHERE ID_client = '{}'""".format(id_client)
-    cursor.execute(request)
-    return cursor.fetchall()[0]["adresse"]
-
-
-def getphone(id_client):
-    request = """SELECT C.telephone FROM client C WHERE C.ID_client = '{}'""".format(id_client)
-    cursor.execute(request)
-    return cursor.fetchall()[0]["telephone"]
-
-
-
-def getemail(id_client):
-    request = """SELECT email FROM Client WHERE ID_client = '{}'""".format(id_client)
-    cursor.execute(request)
-    return cursor.fetchall()[0]["email"]
-
-
-def getpassword(id_client):
-    request = """SELECT C.mot_de_passe FROM client C WHERE C.ID_client = '{}'""".format(id_client)
-    cursor.execute(request)
-    return cursor.fetchall()[0]["mot_de_passe"]
-
-
-def changerSettings(nom, adresse, telephone, email, password, id_client):
-    request = """UPDATE client C set C.nom_complet = '{}', C.adresse = '{}', C.telephone = '{}', C.email ='{}' , C.mot_de_passe = '{}' where  C.ID_client = '{}'""".format(nom, adresse, telephone, email, password, id_client)
-    cursor.execute(request)
 
 
 def insert_user(nom, email, telephone, adresse, password):
@@ -107,8 +60,6 @@ def verifyEmail(email):
     return False  # returns false if email invalid
 
 
-
-
 def verifyPassword(password):  # returns true if password valid
     result = False
     error = ""
@@ -136,12 +87,6 @@ def import_from_csv():
             password = line[1]
             request = """INSERT INTO Client (nom_complet, email, telephone, adresse, password) VALUES ('{}', '{}')""".format(email, password)
             cursor.execute(request)
-
-
-def getIDclient(email):
-    request = """SELECT ID_client FROM Client WHERE email = '{}'""".format(email)
-    cursor.execute(request)
-    return cursor.fetchall()[0]["ID_client"]
 
 
 # pwd = "password123"

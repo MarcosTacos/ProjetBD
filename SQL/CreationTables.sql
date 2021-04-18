@@ -18,47 +18,70 @@ CREATE TABLE IF NOT EXISTS Produit
 (
   ID_produit INT NOT NULL AUTO_INCREMENT,
   nom_du_produit VARCHAR(100) NOT NULL,
-  description VARCHAR(100) NOT NULL,
-  ID_typeProduit INT NOT NULL,
+  description TEXT NOT NULL,
+  quantite_produit INT NOT NULL,
+  taille INT NOT NULL,
+  couleur VARCHAR(20) NOT NULL,
+  genre VARCHAR(20) NOT NULL,
   prix INT NOT NULL,
---     quantityProduct INT NOT NULL
   PRIMARY KEY (ID_produit)
 );
 
--- # Id-Commande se genere dans Panier, et dans Commande il refere a Panier comme foreign key
+-- # Id-panier se genere dans Panier, et dans Commande il refere a Panier comme foreign key
 -- #  ID_client et ID_produit ne sont pas uniques
 CREATE TABLE IF NOT EXISTS Panier
 (
-  ID_commande INT NOT NULL AUTO_INCREMENT,
-  quantite INT NOT NULL,
+  ID_panier INT NOT NULL AUTO_INCREMENT,
   ID_client INT,
-  ID_produit INT,
-  PRIMARY KEY (ID_commande),
-  FOREIGN KEY (ID_client) REFERENCES Client(ID_client) ON UPDATE CASCADE ON DELETE CASCADE,
-  FOREIGN KEY (ID_produit) REFERENCES Produit(ID_produit) ON UPDATE CASCADE ON DELETE CASCADE
-  /*FOREIGN KEY (ID_commande) REFERENCES Commande(ID_commande) ON UPDATE CASCADE ON DELETE CASCADE */
+  statut_panier INT NOT NULL,
+  PRIMARY KEY (ID_panier),
+  FOREIGN KEY (ID_client) REFERENCES Client(ID_client) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
--- # ID_commande et ID_paiement uniques ici --> Id-Paiement de Paiement vareferer a ID-Paiement dans Commande
+
+CREATE TABLE IF NOT EXISTS ItemsPanier (
+#     ID_itemsPanier INT,
+    ID_panier INT,
+    ID_produit INT,
+    quantite_items INT NOT NULL,
+    prix_totalProduits INT NOT NULL,
+    PRIMARY KEY(ID_panier, ID_produit),
+    FOREIGN KEY (ID_panier) REFERENCES Panier(ID_panier) ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY (ID_produit) REFERENCES Produit(ID_produit) ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+
+-- # ID_commande et ID_paiement uniques ici --> Id-Paiement de Paiement va referer a ID-Paiement dans Commande
 CREATE TABLE IF NOT EXISTS Commande
 (
-  ID_commande INT,
-  prix_commande INT,
+  ID_commande INT NOT NULL AUTO_INCREMENT,
+  ID_client INT,
   statut_commande INT NOT NULL,
-  ID_client INT NOT NULL,
-  ID_paiement INT NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (ID_paiement),
-  FOREIGN KEY (ID_client) REFERENCES Client(ID_client) ON UPDATE CASCADE ON DELETE CASCADE,
-  /*FOREIGN KEY (ID_paiement) REFERENCES Paiement(ID_paiement) ON UPDATE CASCADE ON DELETE CASCADE*/
-  FOREIGN KEY (ID_commande) REFERENCES Panier(ID_commande) ON UPDATE CASCADE ON DELETE CASCADE
+  prix_parCommande INT NOT NULL,
+  PRIMARY KEY (ID_commande),
+  FOREIGN KEY (ID_client) REFERENCES Client(ID_client) ON UPDATE CASCADE ON DELETE CASCADE
 );
+
+
+CREATE TABLE IF NOT EXISTS ItemsCommande
+(
+  ID_itemsCommande INT NOT NULL AUTO_INCREMENT,
+  ID_commande INT,
+  ID_produit INT NOT NULL,
+  prix_duProduit INT,
+  quantite_itemsCommande INT,
+  PRIMARY KEY (ID_itemsCommande),
+  FOREIGN KEY (ID_commande) REFERENCES Commande(ID_commande) ON UPDATE CASCADE ON DELETE CASCADE,
+  FOREIGN KEY (ID_produit) REFERENCES Produit(ID_produit) ON UPDATE CASCADE ON DELETE CASCADE
+);
+
 
 -- # ID_paiement et ID_commande uniques ici, Id-PAIEMENT REFERE A ID-Paiement de Commande, c'est dans cette table qu'il est instanciÃ© par AUTO_INCREMENT
 CREATE TABLE IF NOT EXISTS Paiement
 (
-  ID_paiement INT,
+  ID_paiement INT NOT NULL AUTO_INCREMENT,
   mode_paiement VARCHAR(100) NOT NULL,
-  montant_total INT NOT NULL,
+  statut_paiement INT NOT NULL,
   ID_commande INT NOT NULL,
   ID_client INT NOT NULL,
   PRIMARY KEY (ID_paiement),
