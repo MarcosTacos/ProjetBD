@@ -52,16 +52,12 @@ def changer_parametres():
     #TODO dans chaque if statement de la requests post, lorsque varable = None, mettre l'ancienne variable au lieu de la nouvelle
     client_id = getIDclient(session['email'])
     if request.method == "POST":
-
         name = request.form.get('name', None)
-        print(name)
         if name is None:
             name = getname(client_id)
-
         email = request.form.get('email', None)
         if email is None:
             email = getemail(client_id)
-            print(email)
         telephone = request.form.get ('telephone', None)
         if telephone is None:
             telephone = getphone(client_id)
@@ -72,11 +68,9 @@ def changer_parametres():
         if motdepasse is None:
             motdepasse2 = getpassword(client_id)
         try:
-
             if not verifyEmail(email):
                 flash("Votre email {} est invalide".format(email), "warning")
                 return redirect(url_for('settings'))
-
             elif len(name) < 6:
                 flash("Votre nom complet {} est trop court, minimum de 6 caractères".format(name), "warning")
                 return redirect(url_for('settings'))
