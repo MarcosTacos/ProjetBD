@@ -1,6 +1,4 @@
-from passlib.hash import sha256_crypt
 import csv
-import pymysql
 import pymysql.cursors
 from passlib.handlers.sha2_crypt import sha256_crypt
 import re
@@ -9,8 +7,8 @@ regex = '^(\w|\.|\_|\-)+[@](\w|\_|\-|\.)+[.]\w{2,3}$'
 
 connection = pymysql.connect(host='localhost',
                              user='root',
-                             password='12345',
-                             db='testprojet',
+                             password='',
+                             db='test',
                              autocommit=True,
                              charset='utf8mb4',
                              cursorclass=pymysql.cursors.DictCursor)
@@ -88,6 +86,13 @@ def import_from_csv():
             request = """INSERT INTO Client (nom_complet, email, telephone, adresse, password) VALUES ('{}', '{}')""".format(email, password)
             cursor.execute(request)
 
+
+def getIDclient(email):
+    request = """SELECT ID_client FROM Client WHERE email = '{}'""".format(email)
+    cursor.execute(request)
+    return cursor.fetchall()[0]["ID_client"]
+
+# print(getIDclient("reda@hotmail.com"))   #receives client email and returns client ID
 
 # pwd = "password123"
 # hashed = hash_password(pwd)               #  encrypts password
