@@ -1,5 +1,5 @@
 import csv
-from flask import Flask, render_template, jsonify, request, Response, json, redirect, url_for, flash
+from flask import Flask, render_template, jsonify, request, Response, json, redirect, url_for, flash, session
 from flask_bootstrap import Bootstrap
 from flask_login import LoginManager, UserMixin, login_required, login_user, logout_user
 from flask_nav import Nav
@@ -8,7 +8,7 @@ import pymysql.cursors
 from requests import Session
 
 from database import hash_password, verify_hashed_password, insert_user, check_user_password, \
-    import_from_csv, listOfEmails, verifyEmail, verifyPassword, getUserName
+    import_from_csv, listOfEmails, verifyEmail, verifyPassword, getUserName, changerSettings, getname, getadresse, getphone, getemail, getpassword, getIDclient
 
 connection = pymysql.connect(host='localhost',
                              user='root',
@@ -50,37 +50,44 @@ def load_user(userid):
 def changer_parametres():
     #TODO aller chercher l'ancien tuple du client
     #TODO dans chaque if statement de la requests post, lorsque varable = None, mettre l'ancienne variable au lieu de la nouvelle
+    client_id = getIDclient(session['email'])
     if request.method == "POST":
+
         name = request.form.get('name', None)
+        print(name)
         if name is None:
-            print('here')
+            name = getname(client_id)
+
         email = request.form.get('email', None)
         if email is None:
-            email = 'etienne@gmail.com'
-
-        telephone = request.form.get('telephone', None)
+            email = getemail(client_id)
+            print(email)
+        telephone = request.form.get ('telephone', None)
         if telephone is None:
-            print('here3')
+            telephone = getphone(client_id)
         adresse = request.form.get('adresse', None)
         if adresse is None:
-            print('here4')
+            adresse = getadresse(client_id)
         motdepasse = request.form.get('motdepasse', None)
         if motdepasse is None:
-            motdepasse = 'Keto123456'
-
+            motdepasse2 = getpassword(client_id)
         try:
-            if email in listOfEmails():
-                flash('Email incorrect', "warning")
-                return redirect(url_for('settings'))
 
-            elif not verifyEmail(email):
+            if not verifyEmail(email):
                 flash("Votre email {} est invalide".format(email), "warning")
                 return redirect(url_for('settings'))
 
-            elif not verifyPassword(motdepasse)[0]:
-                flash(verifyPassword(motdepasse)[1][0], verifyPassword(motdepasse)[1][1])
+            elif len(name) < 6:
+                flash("Votre nom complet {} est trop court, minimum de 6 caractères".format(name), "warning")
                 return redirect(url_for('settings'))
+            elif len(adresse) < 6:
+                flash("Votre adresse {} est trop court, doit être minimum de 6 caractères".format(adresse), "warning")
+                return redirect(url_for('settings'))
+            # elif len(telephone) != 10 and telephone is not None:
+            #     flash("Votre numéro de téléphone contient {} et doit en contenir 10".format(len(telephone)), "warning")
             else:
+                flash("Vous avec changé vos parametres avec bravour")
+                changerSettings(name, adresse, telephone, email, motdepasse2, client_id)
                 return redirect(url_for('login'))
         finally:
             cursor.close()
@@ -109,6 +116,7 @@ def login():
 @app.route('/connection', methods=['POST'])
 def loginUser():
     if request.method == 'POST':
+        session['email'] = request.form['email']
         email = request.form['email']
         password = request.form['password']
         nom = getUserName(email)
