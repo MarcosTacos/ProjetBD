@@ -1,6 +1,5 @@
 
 // alert("app.js");
-const cors = require("cors");
 app.use(cors())
 
 // Register click goes to sign-in page

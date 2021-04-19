@@ -5,15 +5,15 @@
 <html>
 <head>
 	<title>Python Flask Simple Shopping Cart</title>
-	<link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet" type="text/css" />
+	<link href="/static/produitpanier.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 
-	<div id="shopping-cart">
-		<div class="txt-heading">Shopping Cart</div>
+	<div id="panier">
+		<div class="texte-panier">Votre Panier</div>
 		{% if 'cart_item' in session %}
-			<a id="btnEmpty" href="{{ url_for('.empty_cart') }}">Empty Cart</a>
-			<table class="tbl-cart" cellpadding="10" cellspacing="1">
+			<a id="vider-bouton" href="{{ url_for('.empty_cart') }}">Vider le panier</a>
+			<table class="table-panier" cellpadding="10" cellspacing="1">
 			<tbody>
 				<tr>
 					<th style="text-align:left;">Name</th>
@@ -28,14 +28,14 @@
 					{% set price = session['cart_item'][key]['price'] %}
 					{% set item_price = session['cart_item'][key]['total_price'] %}
 					<tr>
-						<td><img src="/static/images/{{ session['cart_item'][key]['image'] }}" class="cart-item-image" />{{ session['cart_item'][key]['name'] }}</td>
+						<td><img src="/static/images/{{ session['cart_item'][key]['image'] }}" class="image-objet-panier" />{{ session['cart_item'][key]['name'] }}</td>
 						<td>{{ session['cart_item'][key]['code'] }}</td>
 						<td style="text-align:right;">{{ quantity }}</td>
 						<td  style="text-align:right;">$ {{ price }}</td>
 						<td  style="text-align:right;">$ {{ item_price }}</td>
 						<td style="text-align:center;">
-							<a href="{{ url_for('.delete_product', code=session['cart_item'][key]['code']) }}" class="btnRemoveAction">
-								<img src="/static/images/icon-delete.png" alt="Remove Item" />
+							<a href="{{ url_for('.delete_product', code=session['cart_item'][key]['code']) }}" class="retirer-bouton">
+								<img src="/static/images/x-effacer.png" alt="Retirer du panier" />
 							</a>
 						</td>
 					</tr>
@@ -49,25 +49,25 @@
 			</tbody>
 			</table>
 		{% else: %}
-			<div class="no-records">Your Cart is Empty</div>
+			<div class="panier-vide">Your Cart is Empty</div>
 		{% endif %}
 	</div>
 
-	<div id="product-grid">
-		<div class="txt-heading">Products</div>
+	<div id="section-produit">
+		<div class="texte-produit">Products</div>
 
 		{% for product in products %}
 
-			<div class="product-item">
+			<div class="case-produit">
 				<form method="post" action="/add">
-					<div class="product-image"><img src="/static/images/{{ product.image }}"></div>
-					<div class="product-tile-footer">
-						<div class="product-title">{{ product.name }}</div>
-						<div class="product-price">$ {{ product.price }}</div>
-						<div class="cart-action">
+					<div class="image-produit"><img src="/static/images/{{ product.image }}"></div>
+					<div class="footer-produit">
+						<div class="titre-produit">{{ product.name }}</div>
+						<div class="prix-produit">$ {{ product.price }}</div>
+						<div class="ajout-panier">
 							<input type="hidden" name="code" value="{{ product.code }}"/>
-							<input type="text" class="product-quantity" name="quantity" value="1" size="2" />
-							<input type="submit" value="Add to Cart" class="btnAddAction" />
+							<input type="text" class="quantite-produit" name="quantity" value="1" size="2" />
+							<input type="submit" value="Ajouter au panier" class="bouton-ajouter-panier" />
 						</div>
 					</div>
 				</form>
