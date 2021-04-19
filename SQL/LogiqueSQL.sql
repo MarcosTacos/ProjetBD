@@ -37,14 +37,65 @@ select TrouverClient(5);
 
 # Procedure pour chercher toutes les commandes et livraisons d'un client, la SP prend le ClientID en argument.
 DELIMITER //
-CREATE PROCEDURE HistoriqueParClient (IN IDClient INT)
+CREATE PROCEDURE HistoriqueParIDClient (IN IDClient INT)
 BEGIN
     SELECT C.nom_complet, M.ID_commande, M.prix_commande, L.date_livraison, L.statut_livraison
     FROM Client C, Commande M, Livraison L
     WHERE IDClient = C.ID_client AND C.ID_client = M.ID_client AND L.ID_commande = M.ID_commande;
 END //
 DELIMITER ;
-call HistoriqueParClient(66);
+call HistoriqueParIDClient(66);
+
+
+
+# ------------************ PROCEDURE pour retourner l'historiques des commandes d'un client, avec son courriel recu en entrée.*********-----------------
+DELIMITER //
+CREATE PROCEDURE HistoriqueParEmailClient(IN courriel CHAR(30))
+
+BEGIN
+DECLARE IDC integer;
+        SELECT C.ID_Client INTO IDC  FROM Client C WHERE courriel = C.email;
+SELECT C.nom_complet, M.ID_commande, M.prix_parcommande, L.date_livraison, L.statut_livraison
+FROM Client C, Commande M, Livraison L
+WHERE IDC = C.ID_client AND C.ID_client = M.ID_client AND L.ID_commande = M.ID_commande;
+END //
+DELIMITER ;
+
+call HistoriqueParEmailClient('aodeeganj@wired.com');
+DROP PROCEDURE HistoriqueParEmailClient;
+select * from Livraison;
+select * from Commande;
+
+
+
+# ----------------- ************** Trigger pour valider le mot de passe a au moins 9 caracteres avant insertion nouveau client.
+DELIMITER //
+CREATE TRIGGER ValiderMotDePasse BEFORE INSERT ON Client FOR EACH ROW
+BEGIN
+DECLARE msg VARCHAR(50);
+        SET msg = 'OK';
+IF length(new.mot_de_passe) < 9  THEN
+SET msg = 'Mot de passe doit avoir au moins 9 caracteres!';
+SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = msg;
+END IF;
+END //
+DELIMITER ;
+
+insert into Client (nom_complet, email, telephone, adresse, mot_de_passe) values ('Costa Smith', 'costa@hotmail.com', '840-607-7741', '0707 Di Loreto Drive', 'U37');
+DROP TRIGGER ValiderMotDePasse;
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
