@@ -1,9 +1,7 @@
-# ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-
+USE PJT2;
 
 #  ******************************************************************  INSERTIONS TABLE CLIENT *****************************************************************************************
+# Table principale sans aucune reference, contient seulement les informations personnelles des clients.
 
 insert into Client (ID_client, nom_complet, email, telephone, adresse, mot_de_passe) values (1, 'Woodman Welsh', 'wwelsh0@scientificamerican.com', '840-607-7741', '0707 Di Loreto Drive', 'U37InjE');
 insert into Client (ID_client, nom_complet, email, telephone, adresse, mot_de_passe) values (2, 'Glori Lorente', 'glorente1@hostgator.com', '804-540-3082', '26875 Brickson Park Alley', 'vvI16gaXc3');
@@ -105,164 +103,207 @@ insert into Client (ID_client, nom_complet, email, telephone, adresse, mot_de_pa
 insert into Client (ID_client, nom_complet, email, telephone, adresse, mot_de_passe) values (98, 'Filippa Benian', 'fbenian2p@etsy.com', '998-556-2705', '1 Hanover Parkway', '27qc2IOo7');
 insert into Client (ID_client, nom_complet, email, telephone, adresse, mot_de_passe) values (99, 'Lissy Marchington', 'lmarchington2q@apple.com', '512-304-2626', '9778 Lake View Avenue', '3wQHx4L5');
 insert into Client (ID_client, nom_complet, email, telephone, adresse, mot_de_passe) values (100, 'Vito Bussetti', 'vbussetti2r@ehow.com', '197-334-2259', '6402 Coolidge Way', 'NmPW0AGefqw');
-select * from Client;
 
+select *  from Client;
 
 #  ******************************************************************  INSERTIONS TABLE PRODUIT *****************************************************************************************
+# Table principale et ne possede aucune reference exterieure, contient seulement les informations statiques du produit.
+select * from Produit;
 
-insert into Produit (ID_produit, nom_du_produit, description, ID_typeProduit, prix) values (1, 'Air Huarache', 'Taille 10 - Femme', 1, 213);
-insert into Produit (ID_produit, nom_du_produit, description, ID_typeProduit, prix) values (2, 'Air Jordan 7', 'Taille 11 - Femme', 2, 207);
-insert into Produit (ID_produit, nom_du_produit, description, ID_typeProduit, prix) values (3, 'Air Jordan 6', 'Taille 9 - Homme', 3, 191);
-insert into Produit (ID_produit, nom_du_produit, description, ID_typeProduit, prix) values (4, 'Air Max 90', 'Taille 6 - Homme', 4, 222);
-insert into Produit (ID_produit, nom_du_produit, description, ID_typeProduit, prix) values (5, 'Kobe 5', 'Taille 12 - Femme', 5, 208);
-insert into Produit (ID_produit, nom_du_produit, description, ID_typeProduit, prix) values (6, 'Air Max 90', 'Taille 11 - Femme', 6, 199);
-insert into Produit (ID_produit, nom_du_produit, description, ID_typeProduit, prix) values (7, 'Air Jordan 6', 'Taille 8 - Homme', 7, 188);
-insert into Produit (ID_produit, nom_du_produit, description, ID_typeProduit, prix) values (8, 'Air Jordan 6', 'Taille 12 - Femme', 8, 202);
-insert into Produit (ID_produit, nom_du_produit, description, ID_typeProduit, prix) values (9, 'Air Max 97', 'Taille 6 - Femme', 9, 209);
-insert into Produit (ID_produit, nom_du_produit, description, ID_typeProduit, prix) values (10, 'Air Max 95', 'Taille 12 - Homme', 10, 198);
-insert into Produit (ID_produit, nom_du_produit, description, ID_typeProduit, prix) values (11, 'Air Max 95', 'Taille 5 - Homme', 11, 209);
-insert into Produit (ID_produit, nom_du_produit, description, ID_typeProduit, prix) values (12, 'Air Jordan 3', 'Taille 12 - Femme', 12, 184);
-insert into Produit (ID_produit, nom_du_produit, description, ID_typeProduit, prix) values (13, 'Air Max 97', 'Taille 10 - Femme', 13, 200);
-insert into Produit (ID_produit, nom_du_produit, description, ID_typeProduit, prix) values (14, 'Air Max 95', 'Taille 7 - Homme', 14, 199);
-insert into Produit (ID_produit, nom_du_produit, description, ID_typeProduit, prix) values (15, 'Air Mag', 'Taille 10 - Femme', 15, 221);
-insert into Produit (ID_produit, nom_du_produit, description, ID_typeProduit, prix) values (16, 'Air Yeezy', 'Taille 12 - Homme', 16, 222);
-insert into Produit (ID_produit, nom_du_produit, description, ID_typeProduit, prix) values (17, 'Air Max 95', 'Taille 9 - Homme', 17, 188);
-insert into Produit (ID_produit, nom_du_produit, description, ID_typeProduit, prix) values (18, 'Air Jordan 3', 'Taille 8 - Femme', 18, 201);
-insert into Produit (ID_produit, nom_du_produit, description, ID_typeProduit, prix) values (19, 'Air Yeezy', 'Taille 12 - Femme', 19, 187);
-insert into Produit (ID_produit, nom_du_produit, description, ID_typeProduit, prix) values (20, 'Air Jordan 12', 'Taille 8 - Homme', 20, 200);
-insert into Produit (ID_produit, nom_du_produit, description, ID_typeProduit, prix) values (21, 'Air Max 90', 'Taille 9 - Homme', 21, 187);
-insert into Produit (ID_produit, nom_du_produit, description, ID_typeProduit, prix) values (22, 'Air Max 97', 'Taille 13 - Homme', 22, 216);
-insert into Produit (ID_produit, nom_du_produit, description, ID_typeProduit, prix) values (23, 'Air Jordan 3', 'Taille 13 - Homme', 23, 213);
-insert into Produit (ID_produit, nom_du_produit, description, ID_typeProduit, prix) values (24, 'Air Jordan 3', 'Taille 12 - Femme', 24, 202);
-insert into Produit (ID_produit, nom_du_produit, description, ID_typeProduit, prix) values (25, 'Air Jordan 12', 'Taille 6 - Homme', 25, 199);
-insert into Produit (ID_produit, nom_du_produit, description, ID_typeProduit, prix) values (26, 'Air Huarache', 'Taille 12 - Homme', 26, 193);
-insert into Produit (ID_produit, nom_du_produit, description, ID_typeProduit, prix) values (27, 'Air Force 1', 'Taille 5 - Homme', 27, 194);
-insert into Produit (ID_produit, nom_du_produit, description, ID_typeProduit, prix) values (28, 'Kobe 5', 'Taille 10 - Femme', 28, 199);
-insert into Produit (ID_produit, nom_du_produit, description, ID_typeProduit, prix) values (29, 'Air Max 95', 'Taille 8 - Homme', 29, 207);
-insert into Produit (ID_produit, nom_du_produit, description, ID_typeProduit, prix) values (30, 'Air Max 95', 'Taille 9 - Femme', 30, 202);
-insert into Produit (ID_produit, nom_du_produit, description, ID_typeProduit, prix) values (31, 'Air Jordan 6', 'Taille 13 - Femme', 31, 196);
-insert into Produit (ID_produit, nom_du_produit, description, ID_typeProduit, prix) values (32, 'Air Mag', 'Taille 5 - Femme', 32, 184);
-insert into Produit (ID_produit, nom_du_produit, description, ID_typeProduit, prix) values (33, 'Air Jordan 7', 'Taille 10 - Homme', 33, 189);
-insert into Produit (ID_produit, nom_du_produit, description, ID_typeProduit, prix) values (34, 'Air Jordan 3', 'Taille 6 - Femme', 34, 236);
-insert into Produit (ID_produit, nom_du_produit, description, ID_typeProduit, prix) values (35, 'Air Max 97', 'Taille 13 - Femme', 35, 181);
-insert into Produit (ID_produit, nom_du_produit, description, ID_typeProduit, prix) values (36, 'Air Max 90', 'Taille 8 - Homme', 36, 209);
-insert into Produit (ID_produit, nom_du_produit, description, ID_typeProduit, prix) values (37, 'Air Force 1', 'Taille 8 - Femme', 37, 201);
-insert into Produit (ID_produit, nom_du_produit, description, ID_typeProduit, prix) values (38, 'Air Jordan 6', 'Taille 7 - Femme', 38, 177);
-insert into Produit (ID_produit, nom_du_produit, description, ID_typeProduit, prix) values (39, 'Air Jordan 7', 'Taille 11 - Femme', 39, 223);
-insert into Produit (ID_produit, nom_du_produit, description, ID_typeProduit, prix) values (40, 'Air Yeezy', 'Taille 8 - Homme', 40, 208);
-insert into Produit (ID_produit, nom_du_produit, description, ID_typeProduit, prix) values (41, 'Kobe 5', 'Taille 11 - Homme', 41, 212);
-insert into Produit (ID_produit, nom_du_produit, description, ID_typeProduit, prix) values (42, 'Air Jordan 12', 'Taille 13 - Femme', 42, 204);
-insert into Produit (ID_produit, nom_du_produit, description, ID_typeProduit, prix) values (43, 'Kobe 5', 'Taille 5 - Femme', 43, 215);
-insert into Produit (ID_produit, nom_du_produit, description, ID_typeProduit, prix) values (44, 'Air Force 1', 'Taille 6 - Femme', 44, 206);
-insert into Produit (ID_produit, nom_du_produit, description, ID_typeProduit, prix) values (45, 'Air Jordan 3', 'Taille 5 - Homme', 45, 200);
-insert into Produit (ID_produit, nom_du_produit, description, ID_typeProduit, prix) values (46, 'Air Jordan 7', 'Taille 13 - Femme', 46, 201);
-insert into Produit (ID_produit, nom_du_produit, description, ID_typeProduit, prix) values (47, 'Air Max 95', 'Taille 7 - Homme', 47, 184);
-insert into Produit (ID_produit, nom_du_produit, description, ID_typeProduit, prix) values (48, 'Air Max 90', 'Taille 12 - Homme', 48, 222);
-insert into Produit (ID_produit, nom_du_produit, description, ID_typeProduit, prix) values (49, 'Air Max 95', 'Taille 6 - Homme', 49, 209);
-insert into Produit (ID_produit, nom_du_produit, description, ID_typeProduit, prix) values (50, 'Air Force 1', 'Taille 7 - Homme', 50, 175);
-insert into Produit (ID_produit, nom_du_produit, description, ID_typeProduit, prix) values (51, 'Air Mag', 'Taille 7 - Femme', 51, 213);
-insert into Produit (ID_produit, nom_du_produit, description, ID_typeProduit, prix) values (52, 'Air Force 1', 'Taille 12 - Homme', 52, 197);
-insert into Produit (ID_produit, nom_du_produit, description, ID_typeProduit, prix) values (53, 'Air Huarache', 'Taille 13 - Homme', 53, 202);
-insert into Produit (ID_produit, nom_du_produit, description, ID_typeProduit, prix) values (54, 'Air Jordan 12', 'Taille 5 - Femme', 54, 208);
-insert into Produit (ID_produit, nom_du_produit, description, ID_typeProduit, prix) values (55, 'Air Jordan 7', 'Taille 12 - Homme', 55, 208);
-insert into Produit (ID_produit, nom_du_produit, description, ID_typeProduit, prix) values (56, 'Air Jordan 6', 'Taille 9 - Femme', 56, 211);
-insert into Produit (ID_produit, nom_du_produit, description, ID_typeProduit, prix) values (57, 'Air Max 90', 'Taille 13 - Femme', 57, 204);
-insert into Produit (ID_produit, nom_du_produit, description, ID_typeProduit, prix) values (58, 'Air Force 1', 'Taille 9 - Femme', 58, 183);
-insert into Produit (ID_produit, nom_du_produit, description, ID_typeProduit, prix) values (59, 'Air Jordan 3', 'Taille 7 - Homme', 59, 218);
-insert into Produit (ID_produit, nom_du_produit, description, ID_typeProduit, prix) values (60, 'Kobe 5', 'Taille 5 - Femme', 60, 199);
-insert into Produit (ID_produit, nom_du_produit, description, ID_typeProduit, prix) values (61, 'Air Force 1', 'Taille 12 - Femme', 61, 198);
-insert into Produit (ID_produit, nom_du_produit, description, ID_typeProduit, prix) values (62, 'Air Yeezy', 'Taille 10 - Homme', 62, 198);
-insert into Produit (ID_produit, nom_du_produit, description, ID_typeProduit, prix) values (63, 'Kobe 5', 'Taille 5 - Femme', 63, 191);
-insert into Produit (ID_produit, nom_du_produit, description, ID_typeProduit, prix) values (64, 'Air Jordan 12', 'Taille 5 - Homme', 64, 216);
-insert into Produit (ID_produit, nom_du_produit, description, ID_typeProduit, prix) values (65, 'Air Jordan 7', 'Taille 10 - Homme', 65, 196);
-insert into Produit (ID_produit, nom_du_produit, description, ID_typeProduit, prix) values (66, 'Air Huarache', 'Taille 7 - Femme', 66, 217);
-insert into Produit (ID_produit, nom_du_produit, description, ID_typeProduit, prix) values (67, 'Air Jordan 6', 'Taille 13 - Homme', 67, 249);
-insert into Produit (ID_produit, nom_du_produit, description, ID_typeProduit, prix) values (68, 'Air Max 90', 'Taille 13 - Homme', 68, 210);
-insert into Produit (ID_produit, nom_du_produit, description, ID_typeProduit, prix) values (69, 'Kobe 5', 'Taille 13 - Homme', 69, 223);
-insert into Produit (ID_produit, nom_du_produit, description, ID_typeProduit, prix) values (70, 'Air Force 1', 'Taille 11 - Femme', 70, 215);
-insert into Produit (ID_produit, nom_du_produit, description, ID_typeProduit, prix) values (71, 'Air Jordan 6', 'Taille 11 - Homme', 71, 216);
-insert into Produit (ID_produit, nom_du_produit, description, ID_typeProduit, prix) values (72, 'Air Yeezy', 'Taille 12 - Homme', 72, 217);
-insert into Produit (ID_produit, nom_du_produit, description, ID_typeProduit, prix) values (73, 'Air Yeezy', 'Taille 12 - Homme', 73, 230);
-insert into Produit (ID_produit, nom_du_produit, description, ID_typeProduit, prix) values (74, 'Kobe 5', 'Taille 7 - Femme', 74, 198);
-insert into Produit (ID_produit, nom_du_produit, description, ID_typeProduit, prix) values (75, 'Air Jordan 7', 'Taille 11 - Femme', 75, 205);
-insert into Produit (ID_produit, nom_du_produit, description, ID_typeProduit, prix) values (76, 'Air Max 95', 'Taille 12 - Homme', 76, 206);
-insert into Produit (ID_produit, nom_du_produit, description, ID_typeProduit, prix) values (77, 'Air Jordan 7', 'Taille 10 - Femme', 77, 197);
-insert into Produit (ID_produit, nom_du_produit, description, ID_typeProduit, prix) values (78, 'Air Yeezy', 'Taille 12 - Homme', 78, 224);
-insert into Produit (ID_produit, nom_du_produit, description, ID_typeProduit, prix) values (79, 'Air Huarache', 'Taille 9 - Femme', 79, 181);
-insert into Produit (ID_produit, nom_du_produit, description, ID_typeProduit, prix) values (80, 'Air Jordan 6', 'Taille 7 - Femme', 80, 211);
-insert into Produit (ID_produit, nom_du_produit, description, ID_typeProduit, prix) values (81, 'Air Force 1', 'Taille 13 - Homme', 81, 188);
-insert into Produit (ID_produit, nom_du_produit, description, ID_typeProduit, prix) values (82, 'Air Jordan 3', 'Taille 13 - Homme', 82, 202);
-insert into Produit (ID_produit, nom_du_produit, description, ID_typeProduit, prix) values (83, 'Air Jordan 6', 'Taille 5 - Femme', 83, 219);
-insert into Produit (ID_produit, nom_du_produit, description, ID_typeProduit, prix) values (84, 'Air Mag', 'Taille 12 - Homme', 84, 192);
-insert into Produit (ID_produit, nom_du_produit, description, ID_typeProduit, prix) values (85, 'Air Jordan 7', 'Taille 13 - Homme', 85, 169);
-insert into Produit (ID_produit, nom_du_produit, description, ID_typeProduit, prix) values (86, 'Kobe 5', 'Taille 12 - Femme', 86, 193);
-insert into Produit (ID_produit, nom_du_produit, description, ID_typeProduit, prix) values (87, 'Air Max 95', 'Taille 7 - Femme', 87, 197);
-insert into Produit (ID_produit, nom_du_produit, description, ID_typeProduit, prix) values (88, 'Kobe 5', 'Taille 8 - Femme', 88, 245);
-insert into Produit (ID_produit, nom_du_produit, description, ID_typeProduit, prix) values (89, 'Air Max 95', 'Taille 7 - Homme', 89, 203);
-insert into Produit (ID_produit, nom_du_produit, description, ID_typeProduit, prix) values (90, 'Air Huarache', 'Taille 6 - Femme', 90, 183);
-insert into Produit (ID_produit, nom_du_produit, description, ID_typeProduit, prix) values (91, 'Air Yeezy', 'Taille 11 - Femme', 91, 186);
-insert into Produit (ID_produit, nom_du_produit, description, ID_typeProduit, prix) values (92, 'Air Force 1', 'Taille 8 - Femme', 92, 208);
-insert into Produit (ID_produit, nom_du_produit, description, ID_typeProduit, prix) values (93, 'Air Mag', 'Taille 6 - Femme', 93, 203);
-insert into Produit (ID_produit, nom_du_produit, description, ID_typeProduit, prix) values (94, 'Air Huarache', 'Taille 10 - Femme', 94, 223);
-insert into Produit (ID_produit, nom_du_produit, description, ID_typeProduit, prix) values (95, 'Air Max 97', 'Taille 12 - Homme', 95, 213);
-insert into Produit (ID_produit, nom_du_produit, description, ID_typeProduit, prix) values (96, 'Air Jordan 3', 'Taille 13 - Femme', 96, 203);
-insert into Produit (ID_produit, nom_du_produit, description, ID_typeProduit, prix) values (97, 'Air Yeezy', 'Taille 10 - Homme', 97, 206);
-insert into Produit (ID_produit, nom_du_produit, description, ID_typeProduit, prix) values (98, 'Air Jordan 3', 'Taille 8 - Homme', 98, 188);
-insert into Produit (ID_produit, nom_du_produit, description, ID_typeProduit, prix) values (99, 'Kobe 5', 'Taille 13 - Femme', 99, 215);
-insert into Produit (ID_produit, nom_du_produit, description, ID_typeProduit, prix) values (100, 'Kobe 5', 'Taille 5 - Femme', 100, 229);
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Force 1', 'JUST DO IT', 20, 6, 'airforce1.jpeg', 'Unisexe', 230);
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Force 1', 'JUST DO IT', 20, 7, 'airforce1.jpeg', 'Unisexe', 230);
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Force 1', 'JUST DO IT', 20, 8, 'airforce1.jpeg', 'Unisexe', 230);
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Force 1', 'JUST DO IT', 20, 9, 'airforce1.jpeg', 'Unisexe', 230);
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Force 1', 'JUST DO IT', 20, 10, 'airforce1.jpeg', 'Unisexe', 230);
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Force 1', 'JUST DO IT', 20, 11, 'airforce1.jpeg', 'Unisexe', 230);
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Force 1', 'JUST DO IT', 20, 12, 'airforce1.jpeg', 'Unisexe', 230);
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Force 1', 'JUST DO IT', 20, 13, 'airforce1.jpeg', 'Unisexe', 230);
+
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Huarache', 'JUST DO IT', 20, 6, 'airhuarache.jpeg', 'Unisexe', 210);
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Huarache', 'JUST DO IT', 20, 7, 'airhuarache.jpeg', 'Unisexe', 210);
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Huarache', 'JUST DO IT', 20, 8, 'airhuarache.jpeg', 'Unisexe', 210);
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Huarache', 'JUST DO IT', 20, 9, 'airhuarache.jpeg', 'Unisexe', 210);
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Huarache', 'JUST DO IT', 20, 10, 'airhuarache.jpeg', 'Unisexe', 210);
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Huarache', 'JUST DO IT', 20, 11, 'airhuarache.jpeg', 'Unisexe', 210);
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Huarache', 'JUST DO IT', 20, 12, 'airhuarache.jpeg', 'Unisexe', 210);
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Huarache', 'JUST DO IT', 20, 13, 'airhuarache.jpeg', 'Unisexe', 210);
+
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Jordan 4', 'JUST DO IT', 20, 6, 'airjordan4.jpeg', 'Unisexe', 225);
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Jordan 4', 'JUST DO IT', 20, 7, 'airjordan4.jpeg', 'Unisexe', 225);
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Jordan 4', 'JUST DO IT', 20, 8, 'airjordan4.jpeg', 'Unisexe', 225);
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Jordan 4', 'JUST DO IT', 20, 9, 'airjordan4.jpeg', 'Unisexe', 225);
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Jordan 4', 'JUST DO IT', 20, 10, 'airjordan4.jpeg', 'Unisexe', 225);
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Jordan 4', 'JUST DO IT', 20, 11, 'airjordan4.jpeg', 'Unisexe', 225);
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Jordan 4', 'JUST DO IT', 20, 12, 'airjordan4.jpeg', 'Unisexe', 225);
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Jordan 4', 'JUST DO IT', 20, 13, 'airjordan4.jpeg', 'Unisexe', 225);
+
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Jordan 5', 'JUST DO IT', 20, 6, 'airjordan5.jpeg', 'Unisexe', 235);
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Jordan 5', 'JUST DO IT', 20, 7, 'airjordan5.jpeg', 'Unisexe', 235);
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Jordan 5', 'JUST DO IT', 20, 8, 'airjordan5.jpeg', 'Unisexe', 235);
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Jordan 5', 'JUST DO IT', 20, 9, 'airjordan5.jpeg', 'Unisexe', 235);
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Jordan 5', 'JUST DO IT', 20, 10, 'airjordan5.jpeg', 'Unisexe', 235);
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Jordan 5', 'JUST DO IT', 20, 11, 'airjordan5.jpeg', 'Unisexe', 235);
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Jordan 5', 'JUST DO IT', 20, 12, 'airjordan5.jpeg', 'Unisexe', 235);
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Jordan 5', 'JUST DO IT', 20, 13, 'airjordan5.jpeg', 'Unisexe', 235);
+
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Jordan 6', 'JUST DO IT', 20, 6, 'airjordan6.jpeg', 'Unisexe', 250);
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Jordan 6', 'JUST DO IT', 20, 7, 'airjordan6.jpeg', 'Unisexe', 250);
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Jordan 6', 'JUST DO IT', 20, 8, 'airjordan6.jpeg', 'Unisexe', 250);
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Jordan 6', 'JUST DO IT', 20, 9, 'airjordan6.jpeg', 'Unisexe', 250);
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Jordan 6', 'JUST DO IT', 20, 10, 'airjordan6.jpeg', 'Unisexe', 250);
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Jordan 6', 'JUST DO IT', 20, 11, 'airjordan6.jpeg', 'Unisexe', 250);
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Jordan 6', 'JUST DO IT', 20, 12, 'airjordan6.jpeg', 'Unisexe', 250);
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Jordan 6', 'JUST DO IT', 20, 13, 'airjordan6.jpeg', 'Unisexe', 250);
+
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Jordan 7', 'JUST DO IT', 20, 6, 'airjordan7.jpeg', 'Unisexe', 220);
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Jordan 7', 'JUST DO IT', 20, 7, 'airjordan7.jpeg', 'Unisexe', 220);
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Jordan 7', 'JUST DO IT', 20, 8, 'airjordan7.jpeg', 'Unisexe', 220);
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Jordan 7', 'JUST DO IT', 20, 9, 'airjordan7.jpeg', 'Unisexe', 220);
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Jordan 7', 'JUST DO IT', 20, 10, 'airjordan7.jpeg', 'Unisexe', 220);
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Jordan 7', 'JUST DO IT', 20, 11, 'airjordan7.jpeg', 'Unisexe', 220);
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Jordan 7', 'JUST DO IT', 20, 12, 'airjordan7.jpeg', 'Unisexe', 220);
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Jordan 7', 'JUST DO IT', 20, 13, 'airjordan7.jpeg', 'Unisexe', 220);
+
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Jordan 12', 'JUST DO IT', 20, 6, 'airjordan12.jpeg', 'Unisexe', 245);
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Jordan 12', 'JUST DO IT', 20, 7, 'airjordan12.jpeg', 'Unisexe', 245);
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Jordan 12', 'JUST DO IT', 20, 8, 'airjordan12.jpeg', 'Unisexe', 245);
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Jordan 12', 'JUST DO IT', 20, 9, 'airjordan12.jpeg', 'Unisexe', 245);
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Jordan 12', 'JUST DO IT', 20, 10, 'airjordan12.jpeg', 'Unisexe', 245);
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Jordan 12', 'JUST DO IT', 20, 11, 'airjordan12.jpeg', 'Unisexe', 245);
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Jordan 12', 'JUST DO IT', 20, 12, 'airjordan12.jpeg', 'Unisexe', 245);
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Jordan 12', 'JUST DO IT', 20, 13, 'airjordan12.jpeg', 'Unisexe', 245);
+
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Jordan 27', 'JUST DO IT', 20, 6, 'airjordan27.jpeg', 'Unisexe', 345);
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Jordan 27', 'JUST DO IT', 20, 7, 'airjordan27.jpeg', 'Unisexe', 345);
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Jordan 27', 'JUST DO IT', 20, 8, 'airjordan27.jpeg', 'Unisexe', 345);
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Jordan 27', 'JUST DO IT', 20, 9, 'airjordan27.jpeg', 'Unisexe', 345);
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Jordan 27', 'JUST DO IT', 20, 10, 'airjordan27.jpeg', 'Unisexe', 345);
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Jordan 27', 'JUST DO IT', 20, 11, 'airjordan27.jpeg', 'Unisexe', 345);
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Jordan 27', 'JUST DO IT', 20, 12, 'airjordan27.jpeg', 'Unisexe', 345);
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Jordan 27', 'JUST DO IT', 20, 13, 'airjordan27.jpeg', 'Unisexe', 345);
 
 
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Mag', 'JUST DO IT', 20, 6, 'airmag.jpeg', 'Unisexe', 875);
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Mag', 'JUST DO IT', 20, 7, 'airmag.jpeg', 'Unisexe', 875);
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Mag', 'JUST DO IT', 20, 8, 'airmag.jpeg', 'Unisexe', 875);
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Mag', 'JUST DO IT', 20, 9, 'airmag.jpeg', 'Unisexe', 875);
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Mag', 'JUST DO IT', 20, 10, 'airmag.jpeg', 'Unisexe', 875);
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Mag', 'JUST DO IT', 20, 11, 'airmag.jpeg', 'Unisexe', 875);
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Mag', 'JUST DO IT', 20, 12, 'airmag.jpeg', 'Unisexe', 875);
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Mag', 'JUST DO IT', 20, 13, 'airmag.jpeg', 'Unisexe', 875);
 
--- #  ******************************************************************  INSERTIONS TABLE PANIER *****************************************************************************************
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Max 90', 'JUST DO IT', 20, 6, 'airmax90.jpeg', 'Unisexe', 155);
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Max 90', 'JUST DO IT', 20, 7, 'airmax90.jpeg', 'Unisexe', 155);
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Max 90', 'JUST DO IT', 20, 8, 'airmax90.jpeg', 'Unisexe', 155);
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Max 90', 'JUST DO IT', 20, 9, 'airmax90.jpeg', 'Unisexe', 155);
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Max 90', 'JUST DO IT', 20, 10, 'airmax90.jpeg', 'Unisexe', 155);
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Max 90', 'JUST DO IT', 20, 11, 'airmax90.jpeg', 'Unisexe', 155);
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Max 90', 'JUST DO IT', 20, 12, 'airmax90.jpeg', 'Unisexe', 155);
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Max 90', 'JUST DO IT', 20, 13, 'airmax90.jpeg', 'Unisexe', 155);
 
--- # - Panier est specifique a un seul clientID = un panier par client.
--- # Change le ID-Client et ID-PRODUIT manuellement pour faire plusieurs INSERT et arriver a 200 records.
--- # Remarque , ID-Commande NOT DECLARED == AUTO_INCREMENT
-insert into Panier (quantite, ID_client, ID_produit) SELECT RAND()*(3-1)+1, ID_Client, ID_Produit
-FROM Client C, Produit P
-WHERE ID_Client between 95 and 99 AND ID_Produit between 75 and 99;
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Max 95', 'JUST DO IT', 20, 6, 'airmax95.jpeg', 'Unisexe', 250);
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Max 95', 'JUST DO IT', 20, 7, 'airmax95.jpeg', 'Unisexe', 250);
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Max 95', 'JUST DO IT', 20, 7, 'airmax95.jpeg', 'Unisexe', 250);
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Max 95', 'JUST DO IT', 20, 8, 'airmax95.jpeg', 'Unisexe', 250);
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Max 95', 'JUST DO IT', 20, 9, 'airmax95.jpeg', 'Unisexe', 250);
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Max 95', 'JUST DO IT', 20, 10, 'airmax95.jpeg', 'Unisexe', 250);
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Max 95', 'JUST DO IT', 20, 11, 'airmax95.jpeg', 'Unisexe', 250);
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Max 95', 'JUST DO IT', 20, 12, 'airmax95.jpeg', 'Unisexe', 250);
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Max 95', 'JUST DO IT', 20, 13, 'airmax95.jpeg', 'Unisexe', 250);
 
-select * from Panier;
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Max 97', 'JUST DO IT', 20, 6, 'airmax97.jpeg', 'Unisexe', 300);
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Max 97', 'JUST DO IT', 20, 7, 'airmax97.jpeg', 'Unisexe', 300);
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Max 97', 'JUST DO IT', 20, 8, 'airmax97.jpeg', 'Unisexe', 300);
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Max 97', 'JUST DO IT', 20, 9, 'airmax97.jpeg', 'Unisexe', 300);
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Max 97', 'JUST DO IT', 20, 10, 'airmax97.jpeg', 'Unisexe', 300);
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Max 97', 'JUST DO IT', 20, 11, 'airmax97.jpeg', 'Unisexe', 300);
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Max 97', 'JUST DO IT', 20, 12, 'airmax97.jpeg', 'Unisexe', 300);
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Max 97', 'JUST DO IT', 20, 13, 'airmax97.jpeg', 'Unisexe', 300);
+
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Yeezy', 'JUST DO IT', 20, 6, 'airyeezy.jpeg', 'Unisexe', 400);
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Yeezy', 'JUST DO IT', 20, 7, 'airyeezy.jpeg', 'Unisexe', 400);
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Yeezy', 'JUST DO IT', 20, 8, 'airyeezy.jpeg', 'Unisexe', 400);
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Yeezy', 'JUST DO IT', 20, 9, 'airyeezy.jpeg', 'Unisexe', 400);
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Yeezy', 'JUST DO IT', 20, 10, 'airyeezy.jpeg', 'Unisexe', 400);
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Yeezy', 'JUST DO IT', 20, 11, 'airyeezy.jpeg', 'Unisexe', 400);
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Yeezy', 'JUST DO IT', 20, 12, 'airyeezy.jpeg', 'Unisexe', 400);
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Yeezy', 'JUST DO IT', 20, 13, 'airyeezy.jpeg', 'Unisexe', 400);
+
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Kobe5', 'JUST DO IT', 20, 6, 'kobe5.jpeg', 'Unisexe', 200);
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Kobe5', 'JUST DO IT', 20, 7, 'kobe5.jpeg', 'Unisexe', 200);
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Kobe5', 'JUST DO IT', 20, 8, 'kobe5.jpeg', 'Unisexe', 200);
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Kobe5', 'JUST DO IT', 20, 9, 'kobe5.jpeg', 'Unisexe', 200);
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Kobe5', 'JUST DO IT', 20, 10, 'kobe5.jpeg', 'Unisexe', 200);
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Kobe5', 'JUST DO IT', 20, 11, 'kobe5.jpeg', 'Unisexe', 200);
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Kobe5', 'JUST DO IT', 20, 12, 'kobe5.jpeg', 'Unisexe', 200);
+INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Kobe5', 'JUST DO IT', 20, 13, 'kobe5.jpeg', 'Unisexe', 200);
 
 
--- #  ******************************************************************  INSERTIONS TABLE COMMANDE  *****************************************************************************************
 
--- # Changer manuellement Prix Commande et statut avec plusiers INSERT pour avoir 200 tuples.
--- # Remarque , ID-Livraison NOT DECLARED == AUTO_INCREMENT
-insert into Commande (ID_commande, prix_commande, statut_commande, ID_client) SELECT P.ID_commande, Pr.prix , RAND()*(1), P.ID_client from Panier P, Produit Pr;
+#  ******************************************************************  INSERTIONS TABLE PANIER *****************************************************************************************
 
-select * from Commande;
+# SET FOREIGN_KEY_CHECKS=0;    // DO NOT ENABLE ON YOUR VALID DATABASE, USE ON TEST DB - Panier est specifique a un seul clientID = un panier par client.
+#j'ai fait plusieurs INSERT par clientID et ID-Produit **************  cgange le ID-Client et ID-PRODUIT manuellement pour faire plusieurs INSERT et arriver a 200 records.
+# Remarque , ID-Commande N'EST PAS DECLARé === AUTO_INCREMENT
+insert into Panier (ID_client, statut_panier) SELECT ID_Client, 1 FROM Client C, Produit P WHERE C.ID_CLIENT = 1 AND P.ID_Produit between 0 and 10;
+insert into Panier (ID_client, statut_panier) SELECT ID_Client, 1 FROM Client C, Produit P WHERE C.ID_CLIENT = 10 AND P.ID_Produit between 20 and 30;
+insert into Panier (ID_client, statut_panier) SELECT ID_Client, 1 FROM Client C, Produit P WHERE C.ID_CLIENT = 15 AND P.ID_Produit between 10 and 15;
+insert into Panier (ID_client, statut_panier) SELECT ID_Client, 1 FROM Client C, Produit P WHERE C.ID_CLIENT = 20 AND P.ID_Produit between 20 and 30;
+insert into Panier (ID_client, statut_panier) SELECT ID_Client, 1 FROM Client C, Produit P WHERE C.ID_CLIENT = 25 AND P.ID_Produit between 30 and 35;
+insert into Panier (ID_client, statut_panier) SELECT ID_Client, 1 FROM Client C, Produit P WHERE C.ID_CLIENT = 30 AND P.ID_Produit between 10 and 18;
+insert into Panier (ID_client, statut_panier) SELECT ID_Client, 1 FROM Client C, Produit P WHERE C.ID_CLIENT = 35 AND P.ID_Produit between 20 and 30;
 
--- #  ******************************************************************  INSERTIONS TABLE PAIEMENT  *****************************************************************************************
-insert into Paiement (ID_paiement, mode_paiement, montant_total, ID_commande, ID_client) SELECT C.ID_Paiement, 'americanexpress', RAND()*(300-180)+180, C.ID_commande, C.ID_client FROM Commande C
-WHERE ID_commande = 125;
-insert into Paiement (ID_paiement, mode_paiement, montant_total, ID_commande, ID_client) SELECT C.ID_Paiement, 'VISA', RAND()*(300-180)+180, C.ID_commande, C.ID_client FROM Commande C, Produit P
-WHERE ID_Client = 97 ;
-insert into Paiement (ID_paiement, mode_paiement, montant_total, ID_commande, ID_client) SELECT C.ID_Paiement, 'mastercard', RAND()*(300-180)+180, C.ID_commande, C.ID_client FROM Commande C
-WHERE ID_Client = 98;
+select * from panier;
 
-select * from Paiement;
-select SUM(P.quantite*Pr.prix) AS Total from Produit Pr, Panier P;
+#  ******************************************************************  INSERTIONS TABLE ITEMSPANIER *****************************************************************************************
+# ID_Panier est la clé pour retrouver tous les articles du panier
 
--- #  ******************************************************************  INSERTIONS TABLE LIVRAISON *****************************************************************************************
--- # ID_Livraison est AUTO_INCREMENT + PRIMARY KEY, donc a ne pas declarer :
--- # toutes les visa avec statut 0
+insert into ItemsPanier(ID_Panier, Id_Produit, quantite_items, prix_totalProduits)  SELECT N.ID_Panier, P.Id_Produit, 10, 500 FROM Produit P, Panier N WHERE Id_Produit = 10;
+insert into ItemsPanier(ID_Panier, Id_Produit, quantite_items, prix_totalProduits)  SELECT N.ID_Panier, P.Id_Produit, 10, 500 FROM Produit P, Panier N WHERE Id_Produit = 20;
+insert into ItemsPanier(ID_Panier, Id_Produit, quantite_items, prix_totalProduits)  SELECT N.ID_Panier, P.Id_Produit, 10, 500 FROM Produit P, Panier N WHERE Id_Produit = 25;
+insert into ItemsPanier(ID_Panier, Id_Produit, quantite_items, prix_totalProduits)  SELECT N.ID_Panier, P.Id_Produit, 10, 500 FROM Produit P, Panier N WHERE Id_Produit = 50;
+insert into ItemsPanier(ID_Panier, Id_Produit, quantite_items, prix_totalProduits)  SELECT N.ID_Panier, P.Id_Produit, 10, 500 FROM Produit P, Panier N WHERE Id_Produit = 35;
+insert into ItemsPanier(ID_Panier, Id_Produit, quantite_items, prix_totalProduits)  SELECT N.ID_Panier, P.Id_Produit, 10, 500 FROM Produit P, Panier N WHERE Id_Produit = 30;
+
+ ####### si tu veux tout inserer pour tous les Clients dans le meme panier : insert into Panier (quantite, ID_client, ID_produit) SELECT 10, ID_Client, ID_Produit FROM Client C, Produit P
+
+#  ******************************************************************  INSERTIONS TABLE COMMANDE  *****************************************************************************************
+
+# unlock tables ;  // J'ai LOCK la table panier pour changer la FK, unlock table ici pour pouvoir insert, ne pas executer si vous avez fait les tables en ordre
+# SET FOREIGN_KEY_CHECKS = 0;
+# Changer manuellement Prix Commande et statut avec plusiers INSERT pour avoir 200 tuples.
+# Remarque , ID-commande N'EST PAS DECLARE === AUTO_INCREMENT
+insert into Commande (Id_Client, statut_commande, Prix_parcommande) SELECT C.Id_Client, 0, 250 FROM client C WHERE C.Id_Client between 10 AND 20;
+insert into Commande (Id_Client, statut_commande, Prix_parcommande) SELECT C.Id_Client, 1, 145 FROM client C WHERE C.Id_Client between 30 AND 35;
+insert into Commande (Id_Client, statut_commande, Prix_parcommande) SELECT C.Id_Client, 2, 500 FROM client C WHERE C.Id_Client between 20 AND 25;
+insert into Commande (Id_Client, statut_commande, Prix_parcommande) SELECT C.Id_Client, 1, 300 FROM client C WHERE C.Id_Client between 40 AND 45;
+
+
+#  ******************************************************************  INSERTIONS TABLE PAIEMENT  *****************************************************************************************
+# Id_Paiement est AUT-INCREMENT, donc pas besoin de le specifier dans l'insertion.
+insert into Paiement (mode_paiement, statut_paiement, Id_commande, ID_client) SELECT 'americanexpress', 0, C.ID_commande, C.ID_client FROM Commande C WHERE ID_Client < 20;
+insert into Paiement (mode_paiement, statut_paiement, Id_commande, ID_client) SELECT 'Visa', 1, C.ID_commande, C.ID_client FROM Commande C WHERE ID_Client BETWEEN 20 AND 25;
+insert into Paiement (mode_paiement, statut_paiement, Id_commande, ID_client) SELECT 'americanexpress', 0, C.ID_commande, C.ID_client FROM Commande C WHERE ID_Client BETWEEN 30 AND 35;
+insert into Paiement (mode_paiement, statut_paiement, Id_commande, ID_client) SELECT 'americanexpress', 1, C.ID_commande, C.ID_client FROM Commande C WHERE ID_Client BETWEEN 20 AND 25;
+insert into Paiement (mode_paiement, statut_paiement, Id_commande, ID_client) SELECT 'Visa', 0, C.ID_commande, C.ID_client FROM Commande C WHERE ID_Client BETWEEN 30 AND 35;
+insert into Paiement (mode_paiement, statut_paiement, Id_commande, ID_client) SELECT 'americanexpress', 1, C.ID_commande, C.ID_client FROM Commande C WHERE ID_Client BETWEEN 10 AND 15;
+
+
+
+#  ******************************************************************  INSERTIONS TABLE LIVRAISON *****************************************************************************************
+# ID_Livraison est AUTO_INCREMENT + PRIMARY KEY, donc a ne pas declarer :
+# toutes les visa avec statut 0
 insert into Livraison (date_livraison, statut_livraison, ID_commande, ID_paiement)
-SELECT CURDATE() + 5 , 0, C.ID_commande, PA.ID_paiement FROM Commande C, Paiement PA WHERE C.ID_commande = PA.ID_commande
+SELECT CURDATE() + 5 , 0, C.ID_commande, PA.ID_paiement FROM commande C, paiement PA WHERE C.ID_commande = PA.ID_commande
 AND PA.mode_paiement = 'visa';
-
--- # toutes les mastercard avec statut 1
+# toutes les mastercard avec statut 1 MAIS INSERT 0 LIGNES A CAUSE QU'AUCUNE COMMANDE DE COMMANDE DANS Paiement.
 insert into Livraison (date_livraison, statut_livraison, ID_commande, ID_paiement)
-SELECT CURDATE() + 5 , 1, C.ID_commande, PA.ID_paiement FROM Commande C, Paiement PA WHERE C.ID_commande = PA.ID_commande
+SELECT CURDATE() + 5 , 1, C.ID_commande, PA.ID_paiement FROM commande C, paiement PA WHERE C.ID_commande = PA.ID_commande
 AND PA.mode_paiement = 'mastercard';
-
--- # toutes les americanexpress avec statut 2
+# toutes les americanexpress avec statut 2
 insert into Livraison (date_livraison, statut_livraison, ID_commande, ID_paiement)
-SELECT CURDATE() + 5 , 2, C.ID_commande, PA.ID_paiement FROM Commande C, Paiement PA WHERE C.ID_commande = PA.ID_commande
+SELECT CURDATE() + 5 , 2, C.ID_commande, PA.ID_paiement FROM commande C, paiement PA WHERE C.ID_commande = PA.ID_commande
 AND PA.mode_paiement = 'americanexpress';
-
-select * from Livraison;
-
 
 
 

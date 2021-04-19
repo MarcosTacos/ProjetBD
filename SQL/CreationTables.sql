@@ -1,7 +1,9 @@
-#  create database testProjet;
-use testProjet;
+CREATE DATABASE PJT2;
+USE PJT2;
 
--- # ID_client et email unique ici
+
+
+-- # ID_client et email uniques ici
 CREATE TABLE IF NOT EXISTS Client
 (
   ID_client INT NOT NULL AUTO_INCREMENT,
@@ -28,7 +30,7 @@ CREATE TABLE IF NOT EXISTS Produit
 );
 
 -- # Id-panier se genere dans Panier, et dans Commande il refere a Panier comme foreign key
--- #  ID_client et ID_produit ne sont pas uniques
+-- #  ID_client et ID_produit ne sont pas uniques--> Id_Client =  Clé etrangere a Client, Id_Produit = Clé etrangere vers Produit.
 CREATE TABLE IF NOT EXISTS Panier
 (
   ID_panier INT NOT NULL AUTO_INCREMENT,
@@ -67,7 +69,7 @@ CREATE TABLE IF NOT EXISTS ItemsCommande
 (
   ID_itemsCommande INT NOT NULL AUTO_INCREMENT,
   ID_commande INT,
-  ID_produit INT NOT NULL,
+  ID_produit INT,
   prix_duProduit INT,
   quantite_itemsCommande INT,
   PRIMARY KEY (ID_itemsCommande),
@@ -82,8 +84,8 @@ CREATE TABLE IF NOT EXISTS Paiement
   ID_paiement INT NOT NULL AUTO_INCREMENT,
   mode_paiement VARCHAR(100) NOT NULL,
   statut_paiement INT NOT NULL,
-  ID_commande INT NOT NULL,
-  ID_client INT NOT NULL,
+  ID_commande INT,
+  ID_client INT,
   PRIMARY KEY (ID_paiement),
   FOREIGN KEY (ID_commande) REFERENCES Commande(ID_commande) ON UPDATE CASCADE ON DELETE CASCADE,
   FOREIGN KEY (ID_client) REFERENCES Client(ID_client) ON UPDATE CASCADE ON DELETE CASCADE
@@ -108,10 +110,11 @@ CREATE TABLE IF NOT EXISTS Livraison
 -- # set foreign_key_checks = 0;
 DROP TABLE Livraison;
 DROP TABLE Paiement;
+DROP TABLE ItemsCommande;
 DROP TABLE Commande;
+DROP TABLE ItemsPanier;
 DROP TABLE Panier;
 DROP TABLE Produit;
 DROP TABLE Client;
-
 
 show tables;
