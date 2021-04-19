@@ -3,7 +3,8 @@ from flask_cors import CORS
 from flask_login import LoginManager, UserMixin, login_required, login_user, logout_user
 import pymysql.cursors
 
-from database import insert_user, check_user_password, listOfEmails, verifyEmail, verifyPassword, getUserName
+from database import insert_user, check_user_password, listOfEmails, verifyEmail, verifyPassword, getUserName, getname, \
+    getphone, getemail, getadresse, getpassword, changerSettings, getIDclient
 
 connection = pymysql.connect(host='localhost',
                              user='root',
@@ -114,11 +115,6 @@ def login():
     return render_template('login.html')
 
 
-# @app.route('/produits')
-# def products():
-#     return render_template('products.html')
-
-
 @app.route('/panier')
 def cart():
     return render_template('cart.html')
@@ -133,7 +129,7 @@ def promotions():
 def settings():
     return render_template('settings.html')
 
-# /////////////////////////////////////////////////////////////////////
+# ////////////////////////////POUR LE CART/////////////////////////////////////////
 
 
 @app.route('/add', methods=['POST'])
@@ -253,6 +249,63 @@ def array_merge(first_array, second_array):
         return first_array.union(second_array)
     return False
 
+# //////////////////////////  PARAMETRES ///////////////////////
+
+@app.route('/done', methods=['POST'])
+def changer_parametres():
+    #TODO aller chercher l'ancien tuple du client
+    #TODO dans chaque if statement de la requests post, lorsque varable = None, mettre l'ancienne variable au lieu de la nouvelle
+    client_id = getIDclient(session['email'])
+    print(client_id)
+    #client_id =getIDclient(session['email'])
+    if request.method == "POST":
+
+        name = request.form.get('name', None)
+        print(name)
+        if name is None:
+            name = getname(client_id)
+
+        email = request.form.get('email', None)
+        if email is None:
+            email = getemail(client_id)
+            print(email)
+        telephone = request.form.get ('telephone', None)
+        if telephone is None:
+            telephone = getphone(client_id)
+        adresse = request.form.get('adresse', None)
+        if adresse is None:
+            adresse = getadresse(client_id)
+        motdepasse = request.form.get('motdepasse', None)
+        if motdepasse is None:
+            motdepasse2 = getpassword(client_id)
+            # motdepasse = hash_password(motdepasse2)
+        # flash("Vous avec changer vos parametres avec bravour")
+        # changerSettings(name, adresse, telephone, email, motdepasse2, client_id)
+        # return redirect(url_for('login'))
+        # cursor.close()
+        try:
+
+            if not verifyEmail(email):
+                flash("Votre email {} est invalide".format(email), "warning")
+                return redirect(url_for('settings'))
+
+            # elif not verifyPassword(motdepasse)[0]:
+            #     flash(verifyPassword(motdepasse)[1][0], verifyPassword(motdepasse)[1][1])
+            #     return redirect(url_for('settings'))
+            elif len(name) < 6:
+                flash("Votre nom complet {} est trop court, minimum de 6 caractères".format(name), "warning")
+                return redirect(url_for('settings'))
+            elif len(adresse) < 6:
+                flash("Votre adresse {} est trop court, doit être minimum de 6 caractères".format(adresse), "warning")
+                return redirect(url_for('settings'))
+            # elif len(telephone) != 10 and telephone is not None:
+            #     flash("Votre numéro de téléphone contient {} et doit en contenir 10".format(len(telephone)), "warning")
+            else:
+                flash("Vous avec changé vos parametres avec bravour")
+                changerSettings(name, adresse, telephone, email, motdepasse2, client_id)
+                return redirect(url_for('login'))
+        finally:
+            cursor.close()
 
 # //////////////////////////  ERROR HANDLERS ///////////////////////
 

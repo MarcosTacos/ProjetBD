@@ -88,6 +88,51 @@ def import_from_csv():
             request = """INSERT INTO Client (nom_complet, email, telephone, adresse, password) VALUES ('{}', '{}')""".format(email, password)
             cursor.execute(request)
 
+# //////////////////////////  PARAMETRES ///////////////////////
+
+def getname(id_client):
+    request = """SELECT nom_complet FROM client WHERE ID_client = '{}'""".format(id_client)
+    cursor.execute(request)
+    return cursor.fetchall()[0]["nom_complet"]
+
+
+def getadresse(id_client):
+    request = """SELECT adresse FROM client WHERE ID_client = '{}'""".format(id_client)
+    cursor.execute(request)
+    return cursor.fetchall()[0]["adresse"]
+
+
+def getphone(id_client):
+    request = """SELECT C.telephone FROM client C WHERE C.ID_client = '{}'""".format(id_client)
+    cursor.execute(request)
+    return cursor.fetchall()[0]["telephone"]
+
+
+
+def getemail(id_client):
+    request = """SELECT email FROM Client WHERE ID_client = '{}'""".format(id_client)
+    cursor.execute(request)
+    return cursor.fetchall()[0]["email"]
+
+
+def getpassword(id_client):
+    request = """SELECT C.mot_de_passe FROM client C WHERE C.ID_client = '{}'""".format(id_client)
+    cursor.execute(request)
+    return cursor.fetchall()[0]["mot_de_passe"]
+
+
+def changerSettings(nom, adresse, telephone, email, password, id_client):
+    request = """UPDATE client C set C.nom_complet = '{}', C.adresse = '{}', C.telephone = '{}', C.email ='{}' , C.mot_de_passe = '{}' where  C.ID_client = '{}'""".format(nom, adresse, telephone, email, password, id_client)
+    cursor.execute(request)
+
+
+
+def getIDclient(email):
+    request = """SELECT ID_client FROM Client WHERE email = '{}'""".format(email)
+    cursor.execute(request)
+    return cursor.fetchall()[0]["ID_client"]
+
+# /////////////////////////////////////////////////
 
 # pwd = "password123"
 # hashed = hash_password(pwd)               #  encrypts password
