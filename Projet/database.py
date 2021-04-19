@@ -150,9 +150,10 @@ def getIDclient(email):
 
 def changeSettings(nom, adresse, telephone, email, password, id_client):
     hashed_password = hash_password(password)
-    request = """UPDATE Client C set C.nom_complet = '{}', C.adresse = '{}', C.telephone = '{}', C.email ='{}' , C.mot_de_passe = '{}' where  C.ID_client = '{}'""".format(nom, adresse, telephone, email, hashed_password, id_client)
+    request = """update client C
+                 set  C.nom_complet = '{}', C.email = '{}', C.telephone = '{}', C.adresse = '{}', C.mot_de_passe = "{}"
+                 where C.ID_client = '{}'""".format(nom, email, telephone, adresse, hashed_password, id_client)
     cursor.execute(request)
-
 
 # print(getIDclient("reda@hotmail.com"))   #receives client email and returns client ID
 

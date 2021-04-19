@@ -141,6 +141,10 @@ def settings():
     else:
         return render_template('settings.html')
 
+@app.route('/livraison')
+def delivery():
+    return render_template('delivery.html')
+
 
 # //////////////////////////  PARAMETRES ///////////////////////
 

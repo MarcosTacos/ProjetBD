@@ -4,13 +4,13 @@
 {% block content %}
 <html>
 <head>
-	<title>Python Flask Simple Shopping Cart</title>
+	<title>BD-Shop</title>
 	<link href="/static/produitpanier.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 
 	<div id="panier">
-		<div class="texte-panier">Votre Panier</div>
+		<div class="texte-panier"><h1>Votre Panier</h1></div>
 		{% if 'cart_item' in session %}
 			<a id="vider-bouton" href="{{ url_for('.empty_cart') }}">Vider le panier</a>
 			<table class="table-panier" cellpadding="10" cellspacing="1">
@@ -35,7 +35,7 @@
 						<td  style="text-align:right;">$ {{ item_price }}</td>
 						<td style="text-align:center;">
 							<a href="{{ url_for('.delete_product', code=session['cart_item'][key]['code']) }}" class="retirer-bouton">
-								<img src="/static/images/x-effacer.png" alt="Retirer du panier" />
+								<img src="/static/images/delete.png" alt="Retirer du panier" />
 							</a>
 						</td>
 					</tr>
@@ -48,13 +48,19 @@
 				</tr>
 			</tbody>
 			</table>
+		<div align = "center">
+		<a id="go-livraison" href="livraison">
+			</br>
+		<button class="btn btn-md btn-primary btn-block" type="button" style="width: 40%" > Confirmer paiement</button>
+		</a>
+			</div>
 		{% else: %}
-			<div class="panier-vide">Your Cart is Empty</div>
+			<div class="panier-vide">Votre panier est vide</div>
 		{% endif %}
 	</div>
 
 	<div id="section-produit">
-		<div class="texte-produit">Products</div>
+		<div class="texte-produit"><h1>Produits </h1>  </div>
 
 		{% for product in products %}
 
@@ -75,8 +81,9 @@
 
 		{% endfor %}
 
+
 	</div>
 </body>
-</html>
 
 {% endblock %}
+
