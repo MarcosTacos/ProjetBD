@@ -1,20 +1,13 @@
+{% extends "base.html" %}
+{% block title %}BD-SHOP{% endblock %}
+
+{% block content %}
 <html>
 <head>
 	<title>Python Flask Simple Shopping Cart</title>
 	<link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet" type="text/css" />
 </head>
 <body>
-<!--	<div>-->
-<!--		{% with messages = get_flashed_messages() %}-->
-<!--		  {% if messages %}-->
-<!--			<ul class=flashes>-->
-<!--			{% for message in messages %}-->
-<!--			  <li>{{ message }}</li>-->
-<!--			{% endfor %}-->
-<!--			</ul>-->
-<!--		  {% endif %}-->
-<!--		{% endwith %}-->
-<!--	</div>-->
 
 	<div id="shopping-cart">
 		<div class="txt-heading">Shopping Cart</div>
@@ -85,3 +78,5 @@
 	</div>
 </body>
 </html>
+
+{% endblock %}
