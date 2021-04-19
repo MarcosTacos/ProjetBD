@@ -10,7 +10,27 @@
             bottom: 10px;
             width: 100%;
         }
+
+    @media (min-width: 544px) {
+     .dropdown:hover>.dropdown-menu {
+        display: block;
+    }
+    .dropdown>.dropdown-toggle:active {
+        pointer-events: none;
+    }
+   }
     </style>
+
+<script>
+$(document).ready(function(){
+    $(".dropdown").hover(function(){
+        const dropdownMenu = $(this).children(".dropdown-menu");
+        if(dropdownMenu.is(":visible")){
+            dropdownMenu.parent().toggleClass("open");
+        }
+    });
+});
+</script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>{% block title %}{% endblock %}</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
@@ -20,32 +40,48 @@
     <script src = "../static/app.js"></script>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="/">BD-Shop</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-	     <span class="navbar-toggler-icon"></span>
-	 </button>
-         <div class="collapse navbar-collapse" id="navbarNav">
-             <ul class="navbar-nav">
 
-         <li class="nav-item active">
-             <a class="nav-link" href="login">Acceuil <span class="sr-only">(current)</span></a>
-		</li>
-		<li class="nav-item">
-		    <a class="nav-link" href="produits">Produits</a>
-		</li>
-		<li class="nav-item">
-		    <a class="nav-link" href="promotions">Promotions</a>
-		</li>
-         <li class="nav-item">
-             <a class="nav-link" href="parametres" >Parametres</a>
-         </li>
-		<li class="nav-item">
-		    <a class="nav-link disabled" href="panier" tabindex="-1">Panier</a>
-		</li>
-	    </ul>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+        {% if session['test']%}
+    <a class="nav-link dropdown-toggle btn-danger" href="/" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        {{session['test']}}         </a>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        <a class="dropdown-item" href="panier" >Panier</a>
+        <a class = "dropdown-item" href = "parametres"> Parametres</a>
+        <a class="dropdown-item" href="logOut">Deconnection</a>
+
+        {% else %}
+
+        <a class="nav-link dropdown-toggle btn-danger" href="/" role="button" id="dropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            BD-Shop        </a>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item">
+                <a class="dropdown-item disabled" href="panier" tabindex="-1">Panier</a>
+                <a class="dropdown-item" href="login"> Connection</a>
+                {% endif %}
+            </a>
         </div>
-    </nav>
+</div>
+
+  </div>
+</div>
+
+ <ul class="navbar-nav">
+
+<li class="nav-item">
+    <a class="nav-link" href="produits">Produits</a>
+</li>
+
+<li class="nav-item">
+    <a class="nav-link" href="promotions">Promotions</a>
+</li>
+
+
+    </ul>
+    </div>
+</nav>
 
     <div class = "flashwrapper">
     {% with messages = get_flashed_messages(with_categories=true) %}

@@ -1,86 +1,89 @@
-<!DOCTYPE html>
-<html lang="en">
 {% extends "base.html" %}
 {% block title %}BD-SHOP{% endblock %}
 
 {% block content %}
-
+<html>
 <head>
-    <style>
-        body,html{
-            height: 100%;
-            width: 100%;
-            margin: 0;
-            padding: 0;
-            background: #e74c3c !important;
-        }
-    </style>
-    <meta charset="UTF-8">
-    <title>PRODUITS</title>
+	<title>BD-Shop</title>
+	<link href="/static/produitpanier.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 
+	<div id="panier">
+		<div class="texte-panier"><h1>Votre Panier</h1></div>
+		{% if 'cart_item' in session %}
+			<a id="vider-bouton" href="{{ url_for('.empty_cart') }}">Vider le panier</a>
+			<table class="table-panier" cellpadding="10" cellspacing="1">
+			<tbody>
+				<tr>
+					<th style="text-align:left;">Name</th>
+					<th style="text-align:left;">Code</th>
+					<th style="text-align:right;" width="5%">Quantity</th>
+					<th style="text-align:right;" width="10%">Unit Price</th>
+					<th style="text-align:right;" width="10%">Price</th>
+					<th style="text-align:center;" width="5%">Remove</th>
+				</tr>
+				{% for key, val in session['cart_item'].items() %}
+					{% set quantity = session['cart_item'][key]['quantity'] %}
+					{% set price = session['cart_item'][key]['price'] %}
+					{% set item_price = session['cart_item'][key]['total_price'] %}
+					<tr>
+						<td><img src="/static/images/{{ session['cart_item'][key]['image'] }}" class="image-objet-panier" />{{ session['cart_item'][key]['name'] }}</td>
+						<td>{{ session['cart_item'][key]['code'] }}</td>
+						<td style="text-align:right;">{{ quantity }}</td>
+						<td  style="text-align:right;">$ {{ price }}</td>
+						<td  style="text-align:right;">$ {{ item_price }}</td>
+						<td style="text-align:center;">
+							<a href="{{ url_for('.delete_product', code=session['cart_item'][key]['code']) }}" class="retirer-bouton">
+								<img src="/static/images/delete.png" alt="Retirer du panier" />
+							</a>
+						</td>
+					</tr>
+				{% endfor %}
+				<tr>
+					<td colspan="2" align="right">Total:</td>
+					<td align="right">{{ session['all_total_quantity'] }}</td>
+					<td align="right" colspan="2"><strong>$ {{ session['all_total_price'] }}</strong></td>
+					<td></td>
+				</tr>
+			</tbody>
+			</table>
+		<div align = "center">
+		<a id="go-livraison" href="livraison">
+			</br>
+		<button class="btn btn-md btn-primary btn-block" type="button" style="width: 40%" > Confirmer paiement</button>
+		</a>
+			</div>
+		{% else: %}
+			<div class="panier-vide">Votre panier est vide</div>
+		{% endif %}
+	</div>
 
-    <div id="carousel-example-2" class="carousel slide carousel-fade z-depth-1-half" data-ride="carousel">
+	<div id="section-produit">
+		<div class="texte-produit"><h1>Produits </h1>  </div>
 
-        <ol class="carousel-indicators">
-            <li data-target="#carousel-example-2" data-slide-to="0" class="active"></li>
-            <li data-target="#carousel-example-2" data-slide-to="1"></li>
-            <li data-target="#carousel-example-2" data-slide-to="2"></li>
-        </ol>
+		{% for product in products %}
 
-        <div class="carousel-inner" role="listbox">
-            <div class="carousel-item active">
-                <div class="view">
-                    <img id = "image1" class="d-block w-100" src="https://wallpapercave.com/wp/wp2516062.jpg" alt="First slide">
-                    <div class="mask rgba-black-light"></div>
-                </div>
-                <div class="carousel-caption">
-                    <h3 class="h3-responsive">Air Huarache</h3>
-                    <p>Arrache des regards avec les nouvelles Huaraches ;)</p>
-                </div>
-            </div>
-            <div class="carousel-item">
+			<div class="case-produit">
+				<form method="post" action="/add">
+					<div class="image-produit"><img src="/static/images/{{ product.image }}"></div>
+					<div class="footer-produit">
+						<div class="titre-produit">{{ product.name }}</div>
+						<div class="prix-produit">$ {{ product.price }}</div>
+						<div class="ajout-panier">
+							<input type="hidden" name="code" value="{{ product.code }}"/>
+							<input type="text" class="quantite-produit" name="quantity" value="1" size="2" />
+							<input type="submit" value="Ajouter au panier" class="bouton-ajouter-panier" />
+						</div>
+					</div>
+				</form>
+			</div>
 
-                <div class="view">
-                    <img class="d-block w-100" src="https://cdn.sanity.io/images/c1chvb1i/production/33cbcdb3fdcbf46ce83af902151d2a1e4fe2ed71-1100x735.jpg" alt="Second slide">
-                    <div class="mask rgba-black-strong"></div>
-                </div>
-                <div class="carousel-caption">
-                    <h3 class="h3-responsive">Air Jordan 6</h3>
-                    <p>Mets ces Jordans pour attirer Marianne :D</p>
-                </div>
-            </div>
-            <div class="carousel-item">
-
-                <div class="view">
-                    <img class="d-block w-100" src="https://images.squarespace-cdn.com/content/v1/558e0f31e4b0475f86c688ca/1608166189128-FJQUN1WY1Y3HL2JJCWKV/ke17ZwdGBToddI8pDm48kFWxnDtCdRm2WA9rXcwtIYR7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QPOohDIaIeljMHgDF5CVlOqpeNLcJ80NK65_fV7S1UcTSrQkGwCGRqSxozz07hWZrYGYYH8sg4qn8Lpf9k1pYMHPsat2_S1jaQY3SwdyaXg/FOOSH-AirMax95OG-Neon-Dec16-8.jpg" alt="Third slide">
-                    <div class="mask rgba-black-slight"></div>
-                </div>
-                <div class="carousel-caption">
-                    <h3 class="h3-responsive">Air Max 95</h3>
-                    <p>Achete ces Air Max pour booster ton swag au max :O</p>
-                </div>
-            </div>
-        </div>
-
-        <a class="carousel-control-prev" href="#carousel-example-2" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carousel-example-2" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
-
-    </div>
+		{% endfor %}
 
 
-    </div>
-
-
-
+	</div>
 </body>
-</html>
+
 {% endblock %}
 

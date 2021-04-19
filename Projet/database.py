@@ -1,21 +1,20 @@
-from passlib.hash import sha256_crypt
 import csv
-import pymysql
 import pymysql.cursors
+from flask import flash, redirect, url_for
 from passlib.handlers.sha2_crypt import sha256_crypt
 import re
 
-regex = '^(\w|\.|\_|\-)+[@](\w|\_|\-|\.)+[.]\w{2,3}$'
 
 connection = pymysql.connect(host='localhost',
                              user='root',
-                             password='',
+                             password='sterilite27',
                              db='test',
                              autocommit=True,
                              charset='utf8mb4',
                              cursorclass=pymysql.cursors.DictCursor)
 cursor = connection.cursor()
 
+# ////// VALIDATION OF CREDENTIALS ///////
 
 def hash_password(password):
     return sha256_crypt.hash(password)
@@ -53,9 +52,29 @@ def listOfEmails():
             liste.append(i['email'])
     return liste
 
+# def valCreds(email, password):
+#     if email in listOfEmails():
+#         flash('Votre email {} est deja existant'.format(email), "warning")
+#         return False
+#     elif not verifyEmail(email):
+#         flash("Votre email {} est invalide".format(email), "warning")
+#         return False
+#     elif not verifyPassword(password)[0]:
+#         flash(verifyPassword(password)[1][0], verifyPassword(password)[1][1])
+#         return False
+#     else:
+#         return True
+
+
+def verifyPhone(phone):
+    phone_regex = re.compile(r'(\d{3})\D*(\d{3})\D*(\d{4})\D*(\d*)$', re.VERBOSE)
+    if re.search(phone_regex, phone):
+        return True
+    return False
 
 def verifyEmail(email):
-    if re.search(regex, email):
+    mail_regex = '^(\w|\.|\_|\-)+[@](\w|\_|\-|\.)+[.]\w{2,3}$'
+    if re.search(mail_regex, email):
         return True  # returns true if email valid
     return False  # returns false if email invalid
 
@@ -74,10 +93,6 @@ def verifyPassword(password):  # returns true if password valid
         result = True
     return result, error
 
-def getUserName(email):
-    nom, commercial, domaine = email.rpartition('@')
-    return nom
-
 
 def import_from_csv():
     with open("users.csv") as file:
@@ -88,6 +103,59 @@ def import_from_csv():
             request = """INSERT INTO Client (nom_complet, email, telephone, adresse, password) VALUES ('{}', '{}')""".format(email, password)
             cursor.execute(request)
 
+
+# /////////// GETTERS /////////////////
+
+def getIDclient(email):
+    request = """SELECT ID_client FROM Client WHERE email = '{}'""".format(email)
+    cursor.execute(request)
+    return cursor.fetchall()[0]["ID_client"]
+
+def getUserName(email):
+    nom, commercial, domaine = email.rpartition('@')
+    return nom
+
+def getname(id_client):
+    request = """SELECT nom_complet FROM Client WHERE ID_client = '{}'""".format(id_client)
+    cursor.execute(request)
+    return cursor.fetchall()[0]["nom_complet"]
+
+def getadresse(id_client):
+    request = """SELECT adresse FROM Client WHERE ID_client = '{}'""".format(id_client)
+    cursor.execute(request)
+    return cursor.fetchall()[0]["adresse"]
+
+def getphone(id_client):
+    request = """SELECT C.telephone FROM Client C WHERE C.ID_client = '{}'""".format(id_client)
+    cursor.execute(request)
+    return cursor.fetchall()[0]["telephone"]
+
+def getemail(id_client):
+    request = """SELECT email FROM Client WHERE ID_client = '{}'""".format(id_client)
+    cursor.execute(request)
+    return cursor.fetchall()[0]["email"]
+
+def getpassword(id_client):
+    request = """SELECT C.mot_de_passe FROM Client C WHERE C.ID_client = '{}'""".format(id_client)
+    cursor.execute(request)
+    return cursor.fetchall()[0]["mot_de_passe"]
+
+def getIDclient(email):
+    request = """SELECT ID_client FROM Client WHERE email = '{}'""".format(email)
+    cursor.execute(request)
+    return cursor.fetchall()[0]["ID_client"]
+
+
+# ///// SETTER ///////
+
+def changeSettings(nom, adresse, telephone, email, password, id_client):
+    hashed_password = hash_password(password)
+    request = """update client C
+                 set  C.nom_complet = '{}', C.email = '{}', C.telephone = '{}', C.adresse = '{}', C.mot_de_passe = "{}"
+                 where C.ID_client = '{}'""".format(nom, email, telephone, adresse, hashed_password, id_client)
+    cursor.execute(request)
+
+# print(getIDclient("reda@hotmail.com"))   #receives client email and returns client ID
 
 # pwd = "password123"
 # hashed = hash_password(pwd)               #  encrypts password
