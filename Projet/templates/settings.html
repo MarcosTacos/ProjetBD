@@ -7,30 +7,157 @@
 
 <head>
     <style>
-        body,html{
-            height: 100%;
-            width: 100%;
-            margin: 0;
-            padding: 0;
-            background: #e74c3c !important;
+        body,html {
+            background-image: url(https://i.guim.co.uk/img/media/b9f22bb6104bfcc0b8f5552c80c62854d84c7b89/0_0_1920_1152/master/1920.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=28257294f2f595c2e7198963c0cb2681);
+            /*background-image: url("https://pngquant.org/pngquant-logo.png");*/
+            background-repeat: unset;
         }
+
+
+    input[type="checkbox"]{
+        -ms-transform: scale(2);
+  -moz-transform: scale(2);
+  -webkit-transform: scale(2);
+  -o-transform: scale(2);
+  transform: scale(2);
+  padding: 10px;
+        position: absolute;
+        left: 35%;
+
+    }
+    input[type="text"]{
+        position: relative;
+        right: 15px;
+    }
+
+
+    .checkboxtext
+{
+    font-size: 110%;
+    display: inline;
+    position: relative;
+
+}
+
+
+    .group{
+        text-align: center;
+    }
+    .group input{
+        margin: 0 5px 0 20px;
+    }
     </style>
     <meta charset="UTF-8">
     <title>PROMOTIONS</title>
 </head>
 <body>
 
-    {% if session['test']%}
-    <h3>Bonjour {{session['test']}}, </h3>
-{% endif %}
-
-<h1>
+<h1 style="color: black;" align="center">
     Changez vos parametres de compte!
-</h1>
-<div id="products-container">
+</h1><br>
+    <div class="group" align="center">
+        <form id="form" action="/done"  method="post">
+            <p>
+                <input type="checkbox" id="name" onclick="myFunction(this)">
+                <span class="checkboxtext" style="color:black">Votre nom au complet</span>
+            </p>
+             <input type="text" id="textforname" name="name" placeholder="Entrez le nouveau nom complet" required autofocus size="50" disabled="disabled"> </input> <br><br>
+            <p>
+                <input type="checkbox" id="adresse" onclick = myFunction2(this)>
+                <label for="adresse" class="checkmark" style="color: black">Votre adresse</label><br>
+            </p>
+            <input type="text" id="textforadresse"  name="adresse" placeholder="Entrez la nouvelle adresse" required autofocus size="50" disabled="disabled"></input><br><br>
+            <p>
+                <input type="checkbox" id="telephone" onclick = "myFunction3(this)">
+                <label for="telephone" class="checkmark" style="color: black">Votre telephone</label><br>
+            </p>
+            <input type="text" id="textforphone" name="telephone" placeholder="Entrez le nouveau numero de telephone" required autofocus size="50" disabled="disabled"> </input><br><br>
 
 
-</div>
+            <p>
+                <input type="checkbox" id="email" onclick = "myFunction4(this)">
+                <label for="email" class="checkmark" style="color: black">Votre email</label><br>
+            </p>
+            <input type="text" id="textforemail" name="email" placeholder="Entrez le nouveau email" required autofocus size="50" disabled="disabled"> </input><br><br>
+
+
+            <p>
+                <input type="checkbox" id="motdepasse" onclick = "myFunction5(this)">
+                <label for="motdepasse" class="checkmark" style="color: black">Votre mot de passe</label><br>
+            </p>
+            <input type="password" id="textforpassword" name="motdepasse" placeholder="Entrez le nouveau mot de passe" required autofocus size="50" disabled="disabled"> </input> <br><br>
+                <div class="submit" align="center">
+                <button class="boutton" type="submit" onclick="onButtonRegClick()"> Confirmer </button>
+        </div>
+        </form>
+    </div>
+
+<script>
+
+    function myFunction(name) {
+        var checkbox = document.getElementById("textforname");
+        checkbox.disabled = name.checked ? false : true;
+            if (!checkbox.disabled) {
+                checkbox.focus();
+            }
+    }
+    function myFunction2(adresse) {
+        var check = document.getElementById("textforadresse");
+       check.disabled = adresse.checked ? false : true;
+       if(!check.disabled){
+           check.focus()
+       }
+
+    }
+    function myFunction3(telephone) {
+        var check = document.getElementById("textforphone");
+        check.disabled = telephone.checked ? false : true;
+        if (!check.disabled) {
+            check.focus()
+        }
+    }
+
+    function myFunction4(telephone) {
+        var check = document.getElementById("textforemail");
+        check.disabled = telephone.checked ? false : true;
+        if (!check.disabled) {
+            check.focus()
+        }
+    }
+
+    function myFunction5(telephone) {
+        var check = document.getElementById("textforpassword");
+        check.disabled = telephone.checked ? false : true;
+        if (!check.disabled) {
+            check.focus()
+        }
+    }
+
+
+    $(function onButtonRegClick(){
+    $('button').click(function(){
+        var name = $('#textforname').val();
+        var email = $('#textforemail').val();
+        var adresse = $('#textforadresse').val();
+        var telephone = $('#textforphone').val();
+        var motdepasse = $('#textforphone').val();
+
+        $.ajax({
+            url: '/done',
+            data: $('form').serialize(),
+            type: 'POST',
+            success: function onButtonRegClick(response){
+                console.log(response);
+            },
+            error: function onButtonRegClick(error){
+                console.log(error);
+            }
+        });
+    });
+});
+
+</script>
+
 </body>
 </html>
 {% endblock %}
