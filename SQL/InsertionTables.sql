@@ -108,136 +108,150 @@ select *  from Client;
 
 #  ******************************************************************  INSERTIONS TABLE PRODUIT *****************************************************************************************
 # Table principale et ne possede aucune reference exterieure, contient seulement les informations statiques du produit.
-select * from Produit;
+select * from product;
+use test;
+select * from product;
+delete from product where description = 'JUST DO IT';
 
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Force 1', 'JUST DO IT', 20, 6, 'airforce1.jpeg', 'Unisexe', 230);
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Force 1', 'JUST DO IT', 20, 7, 'airforce1.jpeg', 'Unisexe', 230);
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Force 1', 'JUST DO IT', 20, 8, 'airforce1.jpeg', 'Unisexe', 230);
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Force 1', 'JUST DO IT', 20, 9, 'airforce1.jpeg', 'Unisexe', 230);
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Force 1', 'JUST DO IT', 20, 10, 'airforce1.jpeg', 'Unisexe', 230);
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Force 1', 'JUST DO IT', 20, 11, 'airforce1.jpeg', 'Unisexe', 230);
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Force 1', 'JUST DO IT', 20, 12, 'airforce1.jpeg', 'Unisexe', 230);
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Force 1', 'JUST DO IT', 20, 13, 'airforce1.jpeg', 'Unisexe', 230);
-
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Huarache', 'JUST DO IT', 20, 6, 'airhuarache.jpeg', 'Unisexe', 210);
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Huarache', 'JUST DO IT', 20, 7, 'airhuarache.jpeg', 'Unisexe', 210);
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Huarache', 'JUST DO IT', 20, 8, 'airhuarache.jpeg', 'Unisexe', 210);
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Huarache', 'JUST DO IT', 20, 9, 'airhuarache.jpeg', 'Unisexe', 210);
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Huarache', 'JUST DO IT', 20, 10, 'airhuarache.jpeg', 'Unisexe', 210);
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Huarache', 'JUST DO IT', 20, 11, 'airhuarache.jpeg', 'Unisexe', 210);
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Huarache', 'JUST DO IT', 20, 12, 'airhuarache.jpeg', 'Unisexe', 210);
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Huarache', 'JUST DO IT', 20, 13, 'airhuarache.jpeg', 'Unisexe', 210);
-
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Jordan 4', 'JUST DO IT', 20, 6, 'airjordan4.jpeg', 'Unisexe', 225);
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Jordan 4', 'JUST DO IT', 20, 7, 'airjordan4.jpeg', 'Unisexe', 225);
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Jordan 4', 'JUST DO IT', 20, 8, 'airjordan4.jpeg', 'Unisexe', 225);
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Jordan 4', 'JUST DO IT', 20, 9, 'airjordan4.jpeg', 'Unisexe', 225);
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Jordan 4', 'JUST DO IT', 20, 10, 'airjordan4.jpeg', 'Unisexe', 225);
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Jordan 4', 'JUST DO IT', 20, 11, 'airjordan4.jpeg', 'Unisexe', 225);
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Jordan 4', 'JUST DO IT', 20, 12, 'airjordan4.jpeg', 'Unisexe', 225);
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Jordan 4', 'JUST DO IT', 20, 13, 'airjordan4.jpeg', 'Unisexe', 225);
-
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Jordan 5', 'JUST DO IT', 20, 6, 'airjordan5.jpeg', 'Unisexe', 235);
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Jordan 5', 'JUST DO IT', 20, 7, 'airjordan5.jpeg', 'Unisexe', 235);
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Jordan 5', 'JUST DO IT', 20, 8, 'airjordan5.jpeg', 'Unisexe', 235);
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Jordan 5', 'JUST DO IT', 20, 9, 'airjordan5.jpeg', 'Unisexe', 235);
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Jordan 5', 'JUST DO IT', 20, 10, 'airjordan5.jpeg', 'Unisexe', 235);
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Jordan 5', 'JUST DO IT', 20, 11, 'airjordan5.jpeg', 'Unisexe', 235);
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Jordan 5', 'JUST DO IT', 20, 12, 'airjordan5.jpeg', 'Unisexe', 235);
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Jordan 5', 'JUST DO IT', 20, 13, 'airjordan5.jpeg', 'Unisexe', 235);
-
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Jordan 6', 'JUST DO IT', 20, 6, 'airjordan6.jpeg', 'Unisexe', 250);
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Jordan 6', 'JUST DO IT', 20, 7, 'airjordan6.jpeg', 'Unisexe', 250);
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Jordan 6', 'JUST DO IT', 20, 8, 'airjordan6.jpeg', 'Unisexe', 250);
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Jordan 6', 'JUST DO IT', 20, 9, 'airjordan6.jpeg', 'Unisexe', 250);
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Jordan 6', 'JUST DO IT', 20, 10, 'airjordan6.jpeg', 'Unisexe', 250);
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Jordan 6', 'JUST DO IT', 20, 11, 'airjordan6.jpeg', 'Unisexe', 250);
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Jordan 6', 'JUST DO IT', 20, 12, 'airjordan6.jpeg', 'Unisexe', 250);
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Jordan 6', 'JUST DO IT', 20, 13, 'airjordan6.jpeg', 'Unisexe', 250);
-
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Jordan 7', 'JUST DO IT', 20, 6, 'airjordan7.jpeg', 'Unisexe', 220);
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Jordan 7', 'JUST DO IT', 20, 7, 'airjordan7.jpeg', 'Unisexe', 220);
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Jordan 7', 'JUST DO IT', 20, 8, 'airjordan7.jpeg', 'Unisexe', 220);
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Jordan 7', 'JUST DO IT', 20, 9, 'airjordan7.jpeg', 'Unisexe', 220);
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Jordan 7', 'JUST DO IT', 20, 10, 'airjordan7.jpeg', 'Unisexe', 220);
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Jordan 7', 'JUST DO IT', 20, 11, 'airjordan7.jpeg', 'Unisexe', 220);
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Jordan 7', 'JUST DO IT', 20, 12, 'airjordan7.jpeg', 'Unisexe', 220);
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Jordan 7', 'JUST DO IT', 20, 13, 'airjordan7.jpeg', 'Unisexe', 220);
-
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Jordan 12', 'JUST DO IT', 20, 6, 'airjordan12.jpeg', 'Unisexe', 245);
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Jordan 12', 'JUST DO IT', 20, 7, 'airjordan12.jpeg', 'Unisexe', 245);
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Jordan 12', 'JUST DO IT', 20, 8, 'airjordan12.jpeg', 'Unisexe', 245);
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Jordan 12', 'JUST DO IT', 20, 9, 'airjordan12.jpeg', 'Unisexe', 245);
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Jordan 12', 'JUST DO IT', 20, 10, 'airjordan12.jpeg', 'Unisexe', 245);
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Jordan 12', 'JUST DO IT', 20, 11, 'airjordan12.jpeg', 'Unisexe', 245);
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Jordan 12', 'JUST DO IT', 20, 12, 'airjordan12.jpeg', 'Unisexe', 245);
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Jordan 12', 'JUST DO IT', 20, 13, 'airjordan12.jpeg', 'Unisexe', 245);
-
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Jordan 27', 'JUST DO IT', 20, 6, 'airjordan27.jpeg', 'Unisexe', 345);
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Jordan 27', 'JUST DO IT', 20, 7, 'airjordan27.jpeg', 'Unisexe', 345);
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Jordan 27', 'JUST DO IT', 20, 8, 'airjordan27.jpeg', 'Unisexe', 345);
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Jordan 27', 'JUST DO IT', 20, 9, 'airjordan27.jpeg', 'Unisexe', 345);
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Jordan 27', 'JUST DO IT', 20, 10, 'airjordan27.jpeg', 'Unisexe', 345);
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Jordan 27', 'JUST DO IT', 20, 11, 'airjordan27.jpeg', 'Unisexe', 345);
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Jordan 27', 'JUST DO IT', 20, 12, 'airjordan27.jpeg', 'Unisexe', 345);
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Jordan 27', 'JUST DO IT', 20, 13, 'airjordan27.jpeg', 'Unisexe', 345);
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Air Force 1', 'JUST DO IT', 20, 6,'AF1', 'airforce1.jpeg', 'Unisexe', 230);
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Air Force 1', 'JUST DO IT', 20, 7,'AF1', 'airforce1.jpeg', 'Unisexe', 230);
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Air Force 1', 'JUST DO IT', 20, 8,'AF1', 'airforce1.jpeg', 'Unisexe', 230);
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Air Force 1', 'JUST DO IT', 20, 9,'AF1', 'airforce1.jpeg', 'Unisexe', 230);
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Air Force 1', 'JUST DO IT', 20,10,'AF1', 'airforce1.jpeg', 'Unisexe', 230);
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Air Force 1', 'JUST DO IT', 20, 11,'AF1', 'airforce1.jpeg', 'Unisexe', 230);
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Air Force 1', 'JUST DO IT', 20, 12,'AF1', 'airforce1.jpeg', 'Unisexe', 230);
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Air Force 1', 'JUST DO IT', 20, 13,'AF1', 'airforce1.jpeg', 'Unisexe', 230);
 
 
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Mag', 'JUST DO IT', 20, 6, 'airmag.jpeg', 'Unisexe', 875);
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Mag', 'JUST DO IT', 20, 7, 'airmag.jpeg', 'Unisexe', 875);
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Mag', 'JUST DO IT', 20, 8, 'airmag.jpeg', 'Unisexe', 875);
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Mag', 'JUST DO IT', 20, 9, 'airmag.jpeg', 'Unisexe', 875);
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Mag', 'JUST DO IT', 20, 10, 'airmag.jpeg', 'Unisexe', 875);
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Mag', 'JUST DO IT', 20, 11, 'airmag.jpeg', 'Unisexe', 875);
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Mag', 'JUST DO IT', 20, 12, 'airmag.jpeg', 'Unisexe', 875);
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Mag', 'JUST DO IT', 20, 13, 'airmag.jpeg', 'Unisexe', 875);
 
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Max 90', 'JUST DO IT', 20, 6, 'airmax90.jpeg', 'Unisexe', 155);
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Max 90', 'JUST DO IT', 20, 7, 'airmax90.jpeg', 'Unisexe', 155);
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Max 90', 'JUST DO IT', 20, 8, 'airmax90.jpeg', 'Unisexe', 155);
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Max 90', 'JUST DO IT', 20, 9, 'airmax90.jpeg', 'Unisexe', 155);
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Max 90', 'JUST DO IT', 20, 10, 'airmax90.jpeg', 'Unisexe', 155);
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Max 90', 'JUST DO IT', 20, 11, 'airmax90.jpeg', 'Unisexe', 155);
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Max 90', 'JUST DO IT', 20, 12, 'airmax90.jpeg', 'Unisexe', 155);
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Max 90', 'JUST DO IT', 20, 13, 'airmax90.jpeg', 'Unisexe', 155);
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Air Huarache', 'JUST DO IT', 20, 6, 'AH', 'airhuarache.jpeg', 'Unisexe', 210);
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Air Huarache', 'JUST DO IT', 20, 7, 'AH', 'airhuarache.jpeg', 'Unisexe', 210);
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Air Huarache', 'JUST DO IT', 20, 8, 'AH', 'airhuarache.jpeg', 'Unisexe', 210);
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Air Huarache', 'JUST DO IT', 20, 9, 'AH', 'airhuarache.jpeg', 'Unisexe', 210);
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Air Huarache', 'JUST DO IT', 20, 10, 'AH', 'airhuarache.jpeg', 'Unisexe', 210);
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Air Huarache', 'JUST DO IT', 20, 11, 'AH', 'airhuarache.jpeg', 'Unisexe', 210);
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Air Huarache', 'JUST DO IT', 20, 12, 'AH', 'airhuarache.jpeg', 'Unisexe', 210);
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Air Huarache', 'JUST DO IT', 20, 13, 'AH', 'airhuarache.jpeg', 'Unisexe', 210);
 
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Max 95', 'JUST DO IT', 20, 6, 'airmax95.jpeg', 'Unisexe', 250);
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Max 95', 'JUST DO IT', 20, 7, 'airmax95.jpeg', 'Unisexe', 250);
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Max 95', 'JUST DO IT', 20, 7, 'airmax95.jpeg', 'Unisexe', 250);
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Max 95', 'JUST DO IT', 20, 8, 'airmax95.jpeg', 'Unisexe', 250);
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Max 95', 'JUST DO IT', 20, 9, 'airmax95.jpeg', 'Unisexe', 250);
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Max 95', 'JUST DO IT', 20, 10, 'airmax95.jpeg', 'Unisexe', 250);
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Max 95', 'JUST DO IT', 20, 11, 'airmax95.jpeg', 'Unisexe', 250);
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Max 95', 'JUST DO IT', 20, 12, 'airmax95.jpeg', 'Unisexe', 250);
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Max 95', 'JUST DO IT', 20, 13, 'airmax95.jpeg', 'Unisexe', 250);
 
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Max 97', 'JUST DO IT', 20, 6, 'airmax97.jpeg', 'Unisexe', 300);
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Max 97', 'JUST DO IT', 20, 7, 'airmax97.jpeg', 'Unisexe', 300);
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Max 97', 'JUST DO IT', 20, 8, 'airmax97.jpeg', 'Unisexe', 300);
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Max 97', 'JUST DO IT', 20, 9, 'airmax97.jpeg', 'Unisexe', 300);
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Max 97', 'JUST DO IT', 20, 10, 'airmax97.jpeg', 'Unisexe', 300);
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Max 97', 'JUST DO IT', 20, 11, 'airmax97.jpeg', 'Unisexe', 300);
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Max 97', 'JUST DO IT', 20, 12, 'airmax97.jpeg', 'Unisexe', 300);
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Max 97', 'JUST DO IT', 20, 13, 'airmax97.jpeg', 'Unisexe', 300);
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Air Jordan 4', 'JUST DO IT', 20, 6, 'AJ4', 'airjordan4.jpeg', 'Unisexe', 225);
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Air Jordan 4', 'JUST DO IT', 20, 7, 'AJ4', 'airjordan4.jpeg', 'Unisexe', 225);
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Air Jordan 4', 'JUST DO IT', 20, 8, 'AJ4', 'airjordan4.jpeg', 'Unisexe', 225);
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Air Jordan 4', 'JUST DO IT', 20, 9, 'AJ4', 'airjordan4.jpeg', 'Unisexe', 225);
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Air Jordan 4', 'JUST DO IT', 20, 10, 'AJ4', 'airjordan4.jpeg', 'Unisexe', 225);
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Air Jordan 4', 'JUST DO IT', 20, 11, 'AJ4', 'airjordan4.jpeg', 'Unisexe', 225);
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Air Jordan 4', 'JUST DO IT', 20, 12, 'AJ4', 'airjordan4.jpeg', 'Unisexe', 225);
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Air Jordan 4', 'JUST DO IT', 20, 13, 'AJ4', 'airjordan4.jpeg', 'Unisexe', 225);
 
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Yeezy', 'JUST DO IT', 20, 6, 'airyeezy.jpeg', 'Unisexe', 400);
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Yeezy', 'JUST DO IT', 20, 7, 'airyeezy.jpeg', 'Unisexe', 400);
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Yeezy', 'JUST DO IT', 20, 8, 'airyeezy.jpeg', 'Unisexe', 400);
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Yeezy', 'JUST DO IT', 20, 9, 'airyeezy.jpeg', 'Unisexe', 400);
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Yeezy', 'JUST DO IT', 20, 10, 'airyeezy.jpeg', 'Unisexe', 400);
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Yeezy', 'JUST DO IT', 20, 11, 'airyeezy.jpeg', 'Unisexe', 400);
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Yeezy', 'JUST DO IT', 20, 12, 'airyeezy.jpeg', 'Unisexe', 400);
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Air Yeezy', 'JUST DO IT', 20, 13, 'airyeezy.jpeg', 'Unisexe', 400);
 
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Kobe5', 'JUST DO IT', 20, 6, 'kobe5.jpeg', 'Unisexe', 200);
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Kobe5', 'JUST DO IT', 20, 7, 'kobe5.jpeg', 'Unisexe', 200);
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Kobe5', 'JUST DO IT', 20, 8, 'kobe5.jpeg', 'Unisexe', 200);
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Kobe5', 'JUST DO IT', 20, 9, 'kobe5.jpeg', 'Unisexe', 200);
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Kobe5', 'JUST DO IT', 20, 10, 'kobe5.jpeg', 'Unisexe', 200);
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Kobe5', 'JUST DO IT', 20, 11, 'kobe5.jpeg', 'Unisexe', 200);
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Kobe5', 'JUST DO IT', 20, 12, 'kobe5.jpeg', 'Unisexe', 200);
-INSERT INTO Produit(nom_du_produit, description, quantite_produit, taille, couleur, genre, prix) VALUES ('Kobe5', 'JUST DO IT', 20, 13, 'kobe5.jpeg', 'Unisexe', 200);
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Air Jordan 5', 'JUST DO IT', 20, 6,'AJ5', 'airjordan5.jpeg', 'Unisexe', 235);
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Air Jordan 5', 'JUST DO IT', 20, 7,'AJ5', 'airjordan5.jpeg', 'Unisexe', 235);
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Air Jordan 5', 'JUST DO IT', 20, 8,'AJ5', 'airjordan5.jpeg', 'Unisexe', 235);
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Air Jordan 5', 'JUST DO IT', 20, 9,'AJ5', 'airjordan5.jpeg', 'Unisexe', 235);
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Air Jordan 5', 'JUST DO IT', 20, 10,'AJ5', 'airjordan5.jpeg', 'Unisexe', 235);
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Air Jordan 5', 'JUST DO IT', 20, 11,'AJ5', 'airjordan5.jpeg', 'Unisexe', 235);
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Air Jordan 5', 'JUST DO IT', 20, 12,'AJ5', 'airjordan5.jpeg', 'Unisexe', 235);
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Air Jordan 5', 'JUST DO IT', 20, 13,'AJ5', 'airjordan5.jpeg', 'Unisexe', 235);
 
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Air Jordan 6', 'JUST DO IT', 20, 6, 'AJ6', 'airjordan6.jpeg', 'Unisexe', 250);
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Air Jordan 6', 'JUST DO IT', 20, 7, 'AJ6', 'airjordan6.jpeg', 'Unisexe', 250);
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Air Jordan 6', 'JUST DO IT', 20, 8, 'AJ6', 'airjordan6.jpeg', 'Unisexe', 250);
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Air Jordan 6', 'JUST DO IT', 20, 9, 'AJ6', 'airjordan6.jpeg', 'Unisexe', 250);
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Air Jordan 6', 'JUST DO IT', 20, 10, 'AJ6', 'airjordan6.jpeg', 'Unisexe', 250);
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Air Jordan 6', 'JUST DO IT', 20, 11, 'AJ6', 'airjordan6.jpeg', 'Unisexe', 250);
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Air Jordan 6', 'JUST DO IT', 20, 12, 'AJ6', 'airjordan6.jpeg', 'Unisexe', 250);
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Air Jordan 6', 'JUST DO IT', 20, 13, 'AJ6', 'airjordan6.jpeg', 'Unisexe', 250);
+
+
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Air Jordan 7', 'JUST DO IT', 20, 6,'AJ7', 'airjordan7.jpeg', 'Unisexe', 220);
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Air Jordan 7', 'JUST DO IT', 20, 7,'AJ7', 'airjordan7.jpeg', 'Unisexe', 220);
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Air Jordan 7', 'JUST DO IT', 20, 8,'AJ7', 'airjordan7.jpeg', 'Unisexe', 220);
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Air Jordan 7', 'JUST DO IT', 20, 9,'AJ7', 'airjordan7.jpeg', 'Unisexe', 220);
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Air Jordan 7', 'JUST DO IT', 20, 10,'AJ7', 'airjordan7.jpeg', 'Unisexe', 220);
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Air Jordan 7', 'JUST DO IT', 20, 11,'AJ7', 'airjordan7.jpeg', 'Unisexe', 220);
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Air Jordan 7', 'JUST DO IT', 20, 12,'AJ7', 'airjordan7.jpeg', 'Unisexe', 220);
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Air Jordan 7', 'JUST DO IT', 20, 13,'AJ7', 'airjordan7.jpeg', 'Unisexe', 220);
+
+
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Air Jordan 12', 'JUST DO IT', 20, 6,'AJ12', 'airjordan12.jpeg', 'Unisexe', 245);
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Air Jordan 12', 'JUST DO IT', 20, 7,'AJ12', 'airjordan12.jpeg', 'Unisexe', 245);
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Air Jordan 12', 'JUST DO IT', 20, 8,'AJ12', 'airjordan12.jpeg', 'Unisexe', 245);
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Air Jordan 12', 'JUST DO IT', 20, 9,'AJ12', 'airjordan12.jpeg', 'Unisexe', 245);
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Air Jordan 12', 'JUST DO IT', 20, 10,'AJ12', 'airjordan12.jpeg', 'Unisexe', 245);
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Air Jordan 12', 'JUST DO IT', 20, 11,'AJ12', 'airjordan12.jpeg', 'Unisexe', 245);
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Air Jordan 12', 'JUST DO IT', 20, 12,'AJ12', 'airjordan12.jpeg', 'Unisexe', 245);
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Air Jordan 12', 'JUST DO IT', 20, 13,'AJ12', 'airjordan12.jpeg', 'Unisexe', 245);
+
+
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Air Jordan 27', 'JUST DO IT', 20, 6, 'AJ27', 'airjordan27.jpeg', 'Unisexe', 345);
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Air Jordan 27', 'JUST DO IT', 20, 7, 'AJ27', 'airjordan27.jpeg', 'Unisexe', 345);
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Air Jordan 27', 'JUST DO IT', 20, 8, 'AJ27', 'airjordan27.jpeg', 'Unisexe', 345);
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Air Jordan 27', 'JUST DO IT', 20, 9, 'AJ27', 'airjordan27.jpeg', 'Unisexe', 345);
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Air Jordan 27', 'JUST DO IT', 20, 10, 'AJ27', 'airjordan27.jpeg', 'Unisexe', 345);
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Air Jordan 27', 'JUST DO IT', 20, 11, 'AJ27', 'airjordan27.jpeg', 'Unisexe', 345);
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Air Jordan 27', 'JUST DO IT', 20, 12, 'AJ27', 'airjordan27.jpeg', 'Unisexe', 345);
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Air Jordan 27', 'JUST DO IT', 20, 13, 'AJ27', 'airjordan27.jpeg', 'Unisexe', 345);
+
+
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Air Mag', 'JUST DO IT', 20, 6, 'AMag','airmag.jpeg', 'Unisexe', 875);
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Air Mag', 'JUST DO IT', 20, 7, 'AMag','airmag.jpeg', 'Unisexe', 875);
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Air Mag', 'JUST DO IT', 20, 8, 'AMag','airmag.jpeg', 'Unisexe', 875);
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Air Mag', 'JUST DO IT', 20, 9, 'AMag','airmag.jpeg', 'Unisexe', 875);
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Air Mag', 'JUST DO IT', 20, 10, 'AMag','airmag.jpeg', 'Unisexe', 875);
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Air Mag', 'JUST DO IT', 20, 11, 'AMag','airmag.jpeg', 'Unisexe', 875);
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Air Mag', 'JUST DO IT', 20, 12, 'AMag','airmag.jpeg', 'Unisexe', 875);
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Air Mag', 'JUST DO IT', 20, 13, 'AMag','airmag.jpeg', 'Unisexe', 875);
+
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Air Max 90', 'JUST DO IT', 20, 6, 'AM90', 'airmax90.jpeg', 'Unisexe', 155);
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Air Max 90', 'JUST DO IT', 20, 7, 'AM90', 'airmax90.jpeg', 'Unisexe', 155);
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Air Max 90', 'JUST DO IT', 20, 8, 'AM90', 'airmax90.jpeg', 'Unisexe', 155);
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Air Max 90', 'JUST DO IT', 20, 9, 'AM90', 'airmax90.jpeg', 'Unisexe', 155);
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Air Max 90', 'JUST DO IT', 20, 10, 'AM90', 'airmax90.jpeg', 'Unisexe', 155);
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Air Max 90', 'JUST DO IT', 20, 11, 'AM90', 'airmax90.jpeg', 'Unisexe', 155);
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Air Max 90', 'JUST DO IT', 20, 12, 'AM90', 'airmax90.jpeg', 'Unisexe', 155);
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Air Max 90', 'JUST DO IT', 20, 13, 'AM90', 'airmax90.jpeg', 'Unisexe', 155);
+
+
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Air Max 95', 'JUST DO IT', 20, 6, 'AM95', 'airmax95.jpeg', 'Unisexe', 250);
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Air Max 95', 'JUST DO IT', 20, 7, 'AM95', 'airmax95.jpeg', 'Unisexe', 250);
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Air Max 95', 'JUST DO IT', 20, 8, 'AM95', 'airmax95.jpeg', 'Unisexe', 250);
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Air Max 95', 'JUST DO IT', 20, 9, 'AM95', 'airmax95.jpeg', 'Unisexe', 250);
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Air Max 95', 'JUST DO IT', 20, 10, 'AM95', 'airmax95.jpeg', 'Unisexe', 250);
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Air Max 95', 'JUST DO IT', 20, 11, 'AM95', 'airmax95.jpeg', 'Unisexe', 250);
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Air Max 95', 'JUST DO IT', 20, 12, 'AM95', 'airmax95.jpeg', 'Unisexe', 250);
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Air Max 95', 'JUST DO IT', 20, 13, 'AM95', 'airmax95.jpeg', 'Unisexe', 250);
+
+
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Air Max 97', 'JUST DO IT', 20, 6, 'AM97', 'airmax97.jpeg', 'Unisexe', 300);
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Air Max 97', 'JUST DO IT', 20, 7, 'AM97', 'airmax97.jpeg', 'Unisexe', 300);
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Air Max 97', 'JUST DO IT', 20, 8, 'AM97', 'airmax97.jpeg', 'Unisexe', 300);
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Air Max 97', 'JUST DO IT', 20, 9, 'AM97', 'airmax97.jpeg', 'Unisexe', 300);
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Air Max 97', 'JUST DO IT', 20, 10, 'AM97', 'airmax97.jpeg', 'Unisexe', 300);
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Air Max 97', 'JUST DO IT', 20, 11, 'AM97', 'airmax97.jpeg', 'Unisexe', 300);
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Air Max 97', 'JUST DO IT', 20, 12, 'AM97', 'airmax97.jpeg', 'Unisexe', 300);
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Air Max 97', 'JUST DO IT', 20, 13, 'AM97', 'airmax97.jpeg', 'Unisexe', 300);
+
+
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Air Yeezy', 'JUST DO IT', 20, 6, 'AYee', 'airyeezy.jpeg', 'Unisexe', 400);
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Air Yeezy', 'JUST DO IT', 20, 7, 'AYee', 'airyeezy.jpeg', 'Unisexe', 400);
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Air Yeezy', 'JUST DO IT', 20, 8, 'AYee', 'airyeezy.jpeg', 'Unisexe', 400);
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Air Yeezy', 'JUST DO IT', 20, 9, 'AYee', 'airyeezy.jpeg', 'Unisexe', 400);
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Air Yeezy', 'JUST DO IT', 20, 10, 'AYee', 'airyeezy.jpeg', 'Unisexe', 400);
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Air Yeezy', 'JUST DO IT', 20, 11, 'AYee', 'airyeezy.jpeg', 'Unisexe', 400);
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Air Yeezy', 'JUST DO IT', 20, 12, 'AYee', 'airyeezy.jpeg', 'Unisexe', 400);
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Air Yeezy', 'JUST DO IT', 20, 13, 'AYee', 'airyeezy.jpeg', 'Unisexe', 400);
+
+
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Kobe5', 'JUST DO IT', 20, 6, 'Ko5', 'kobe5.jpeg', 'Unisexe', 200);
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Kobe5', 'JUST DO IT', 20, 7, 'Ko5', 'kobe5.jpeg', 'Unisexe', 200);
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Kobe5', 'JUST DO IT', 20, 8, 'Ko5', 'kobe5.jpeg', 'Unisexe', 200);
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Kobe5', 'JUST DO IT', 20, 9, 'Ko5', 'kobe5.jpeg', 'Unisexe', 200);
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Kobe5', 'JUST DO IT', 20, 10, 'Ko5', 'kobe5.jpeg', 'Unisexe', 200);
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Kobe5', 'JUST DO IT', 20, 11, 'Ko5', 'kobe5.jpeg', 'Unisexe', 200);
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Kobe5', 'JUST DO IT', 20, 12, 'Ko5', 'kobe5.jpeg', 'Unisexe', 200);
+INSERT INTO product(name, description, quantite_produit, taille, code, image, genre, price) VALUES ('Kobe5', 'JUST DO IT', 20, 13, 'Ko5', 'kobe5.jpeg', 'Unisexe', 200);
+
+select * from product;
 
 
 #  ******************************************************************  INSERTIONS TABLE PANIER *****************************************************************************************
@@ -374,31 +388,30 @@ AND PA.mode_paiement = 'americanexpress';
 
 
 # # Updates table to create relation between type of product and their names
-# update Produit
-# set ID_typeProduit = (CASE
-#                   WHEN nom_du_produit = 'Air Huarache'
+# update product# set ID_typeProduit = (CASE
+#                   WHEN name = 'Air Huarache'
 #                     THEN 0001
-#                   WHEN nom_du_produit = 'Air Force 1'
+#                   WHEN name = 'Air Force 1'
 #                     THEN 0002
-#                   WHEN nom_du_produit = 'Air Max 90'
+#                   WHEN name = 'Air Max 90'
 #                     THEN 0003
-#                      WHEN nom_du_produit = 'Air Mag'
+#                      WHEN name = 'Air Mag'
 #                     THEN 0004
-#                   WHEN nom_du_produit = 'Air Yeezy'
+#                   WHEN name = 'Air Yeezy'
 #                     THEN 0005
-#                   WHEN nom_du_produit = 'Air Jordan 3'
+#                   WHEN name = 'Air Jordan 3'
 #                     THEN 0006
-#                      WHEN nom_du_produit = 'Air Jordan 6'
+#                      WHEN name = 'Air Jordan 6'
 #                     THEN 0007
-#                   WHEN nom_du_produit = 'Air Jordan 12'
+#                   WHEN name = 'Air Jordan 12'
 #                     THEN 0008
-#                   WHEN nom_du_produit = 'Air Max 97'
+#                   WHEN name = 'Air Max 97'
 #                     THEN 0009
-#                      WHEN nom_du_produit = 'Kobe 5'
+#                      WHEN name = 'Kobe 5'
 #                     THEN 0010
-#                   WHEN nom_du_produit = 'Air Jordan 7'
+#                   WHEN name = 'Air Jordan 7'
 #                     THEN 0011
-#                   WHEN nom_du_produit = 'Air Max 95'
+#                   WHEN name = 'Air Max 95'
 #                     THEN 0012
 #                 END);
 # select * from Produit;

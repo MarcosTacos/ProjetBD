@@ -3,6 +3,7 @@ USE PJT2;
 
 
 
+
 -- # ID_client et email uniques ici
 CREATE TABLE IF NOT EXISTS Client
 (
@@ -16,16 +17,17 @@ CREATE TABLE IF NOT EXISTS Client
   PRIMARY KEY (ID_client)
 );
 -- # ID_produit unique
-CREATE TABLE IF NOT EXISTS Produit
+CREATE TABLE IF NOT EXISTS product
 (
   ID_produit INT NOT NULL AUTO_INCREMENT,
-  nom_du_produit VARCHAR(100) NOT NULL,
+  name VARCHAR(100) NOT NULL,
   description TEXT NOT NULL,
   quantite_produit INT NOT NULL,
   taille INT NOT NULL,
-  couleur VARCHAR(20) NOT NULL,
+  code varchar(255) ,
+  image VARCHAR(20) NOT NULL,
   genre VARCHAR(20) NOT NULL,
-  prix INT NOT NULL,
+  price INT NOT NULL,
   PRIMARY KEY (ID_produit)
 );
 
@@ -49,7 +51,7 @@ CREATE TABLE IF NOT EXISTS ItemsPanier (
     prix_totalProduits INT NOT NULL,
     PRIMARY KEY(ID_panier, ID_produit),
     FOREIGN KEY (ID_panier) REFERENCES Panier(ID_panier) ON UPDATE CASCADE ON DELETE CASCADE,
-    FOREIGN KEY (ID_produit) REFERENCES Produit(ID_produit) ON UPDATE CASCADE ON DELETE CASCADE
+    FOREIGN KEY (ID_produit) REFERENCES product(ID_produit) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 
@@ -74,7 +76,7 @@ CREATE TABLE IF NOT EXISTS ItemsCommande
   quantite_itemsCommande INT,
   PRIMARY KEY (ID_itemsCommande),
   FOREIGN KEY (ID_commande) REFERENCES Commande(ID_commande) ON UPDATE CASCADE ON DELETE CASCADE,
-  FOREIGN KEY (ID_produit) REFERENCES Produit(ID_produit) ON UPDATE CASCADE ON DELETE CASCADE
+  FOREIGN KEY (ID_produit) REFERENCES product(ID_produit) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 
@@ -114,7 +116,9 @@ DROP TABLE ItemsCommande;
 DROP TABLE Commande;
 DROP TABLE ItemsPanier;
 DROP TABLE Panier;
-DROP TABLE Produit;
+DROP TABLE product;
 DROP TABLE Client;
 
 show tables;
+
+SELECT * FROM product;
