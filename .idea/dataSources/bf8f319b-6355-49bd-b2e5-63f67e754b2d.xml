@@ -1728,24 +1728,44 @@ datevoyage</ColNames>
       <NotNull>1</NotNull>
       <Collation>utf8mb4_unicode_ci</Collation>
     </column>
-    <column id="471" parent="312" name="code">
+    <column id="471" parent="312" name="description">
       <Position>3</Position>
+      <DataType>text|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="472" parent="312" name="quantite_produit">
+      <Position>4</Position>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="473" parent="312" name="taille">
+      <Position>5</Position>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="474" parent="312" name="code">
+      <Position>6</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <Collation>utf8mb4_unicode_ci</Collation>
     </column>
-    <column id="472" parent="312" name="image">
-      <Position>4</Position>
+    <column id="475" parent="312" name="image">
+      <Position>7</Position>
       <DataType>text|0s</DataType>
       <NotNull>1</NotNull>
       <Collation>utf8mb4_unicode_ci</Collation>
     </column>
-    <column id="473" parent="312" name="price">
-      <Position>5</Position>
+    <column id="476" parent="312" name="genre">
+      <Position>8</Position>
+      <DataType>varchar(20)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="477" parent="312" name="price">
+      <Position>9</Position>
       <DataType>double|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <key id="474" parent="312" name="PRIMARY">
+    <key id="478" parent="312" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
