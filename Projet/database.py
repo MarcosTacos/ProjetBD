@@ -22,6 +22,10 @@ def hash_password(password):
 def verify_hashed_password(password, actual):
     return sha256_crypt.verify(password, actual)
 
+def self_destruct(id_client):
+    request = """DELETE FROM client WHERE ID_client = '{}'""".format(id_client)
+    cursor.execute(request)
+
 
 
 def getname(id_client):

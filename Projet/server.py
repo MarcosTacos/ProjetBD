@@ -3,8 +3,8 @@ from flask_cors import CORS
 from flask_login import LoginManager, UserMixin, login_required, login_user, logout_user
 import pymysql.cursors
 
-from database import insert_user, check_user_password, listOfEmails, verifyEmail, verifyPassword, getUserName, getname, getadresse, getphone, getemail, getpassword, getIDclient, changerSettings, hash_password
-
+from database import insert_user, check_user_password, listOfEmails, verifyEmail, verifyPassword, getUserName, getname
+from database import getadresse, getphone, getemail, getpassword, getIDclient, changerSettings, hash_password, self_destruct
 connection = pymysql.connect(host='localhost',
                              user='root',
                              password='Keto1234',
@@ -73,12 +73,43 @@ def logOut():
     return redirect(url_for('login'))
 
 
+
+@app.route('/almostdone', methods=['POST'])
+def affichermotdepasseOublier():
+    if request.method == 'POST':
+        email = request.form['email']
+        motdepasse = request.form['motdepasse']
+        try:
+            if email not in listOfEmails():
+                flash("Le email: '{}' n'est pas dans notre base de donnée, regarder voir si vous avez pas fait d'erreure ".format(email), "warning")
+                return redirect(url_for('forgot'))
+
+            elif not verifyPassword(motdepasse):
+                flash("Votre mot de passe est invalide", "warning")
+                return redirect(url_for('forgot'))
+            else:
+                flash("Un email à été envoyé à votre adresse courriel!")
+                return redirect(url_for('login'))
+        finally:
+            cursor.close()
+
+
+@app.route('/selfdestrcut', methods=['POST'])
+def detruire_client():
+    if request.method == 'POST':
+        #TODO aller chercher encore une fois le id_client
+        id_client = 4
+        self_destruct(id_client)
+        flash("Vous venez de détruire votre account", "warning")
+        return redirect(url_for('login'))
+
+
 @app.route('/done', methods=['POST'])
 def changer_parametres():
     #TODO aller chercher l'ancien tuple du client
     #TODO dans chaque if statement de la requests post, lorsque varable = None, mettre l'ancienne variable au lieu de la nouvelle
-    client_id = getIDclient(session['email'])
-    # client_id = 23
+    #client_id = getIDclient(session['email2'])
+    client_id = 23
     if request.method == "POST":
 
         name = request.form.get('name', None)
@@ -98,9 +129,7 @@ def changer_parametres():
             motdepasse2 = getpassword(client_id)
         else:
             motdepasse2 = verifyPassword(motdepasse)
-
         try:
-
             if not verifyEmail(email):
                 flash("Votre email {} est invalide".format(email), "warning")
                 return redirect(url_for('settings'))
@@ -113,8 +142,6 @@ def changer_parametres():
             elif len(adresse) < 6:
                 flash("Votre adresse {} est trop court, doit être minimum de 6 caractères".format(adresse), "warning")
                 return redirect(url_for('settings'))
-            # elif len(telephone) != 10 and telephone is not None:
-            #     flash("Votre numéro de téléphone contient {} et doit en contenir 10".format(len(telephone)), "warning")
             else:
                 flash("Vous avec changé vos parametres avec bravour")
                 changerSettings(name, adresse, telephone, email, motdepasse2, client_id)
@@ -164,6 +191,11 @@ def index():
 @app.route('/signIn')
 def signIn():
     return render_template('sign-in.html')
+
+
+@app.route('/forgot')
+def forgot():
+    return render_template('oublie.html')
 
 
 @app.route('/login')
