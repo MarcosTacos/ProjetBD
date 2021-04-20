@@ -1,61 +1,99 @@
-
+<!DOCTYPE html>
+<html lang="en">
 {% extends "base.html" %}
 {% block title %}BD-SHOP{% endblock %}
 
 {% block content %}
 
 <head>
-
     <style>
+        body,html {
+            background-image: url(https://i.guim.co.uk/img/media/b9f22bb6104bfcc0b8f5552c80c62854d84c7b89/0_0_1920_1152/master/1920.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=28257294f2f595c2e7198963c0cb2681);
+            /*background-image: url("https://pngquant.org/pngquant-logo.png");*/
+            background-repeat: unset;
+        }
 
-body {
-background-image: url(https://i.guim.co.uk/img/media/b9f22bb6104bfcc0b8f5552c80c62854d84c7b89/0_0_1920_1152/master/1920.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=28257294f2f595c2e7198963c0cb2681);
-background-repeat: unset;
-}
 
-.form-group label {
-margin-bottom: 10px;
-border-top-left-radius: 0;
-border-top-right-radius: 0;
-color: black;
-font-size: 19px;
-}
-input[type="checkbox"]{
--ms-transform: scale(2);
--moz-transform: scale(2);
--webkit-transform: scale(2);
--o-transform: scale(2);
-transform: scale(2);
-padding: 10px;
-position: absolute;
-left: 40%;
+    input[type="checkbox"]{
+        -ms-transform: scale(2);
+  -moz-transform: scale(2);
+  -webkit-transform: scale(2);
+  -o-transform: scale(2);
+  transform: scale(2);
+  padding: 10px;
+        position: absolute;
+        left: 35%;
 
-}
-input[type="text"]{
-position: relative;
-right: 15px;
-}
+    }
+    input[type="text"]{
+        position: relative;
+        right: 15px;
+    }
 
-.checkboxtext
+
+    .checkboxtext
 {
-font-size: 110%;
-display: inline;
-}
-    </style>
+    font-size: 110%;
+    display: inline;
+    position: relative;
 
-    <title>PARAMETRES</title>
+}
+    .styled {
+    border: 0;
+    line-height: 2.5;
+    padding: 0 20px;
+    font-size: 1rem;
+    text-align: center;
+    color: #fff;
+    text-shadow: 1px 1px 1px #000;
+    border-radius: 10px;
+    background-color: rgba(220, 0, 0, 1);
+    background-image: linear-gradient(to top left,
+                                      rgba(0, 0, 0, .2),
+                                      rgba(0, 0, 0, .2) 30%,
+                                      rgba(0, 0, 0, 0));
+    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, .6),
+                inset -2px -2px 3px rgba(0, 0, 0, .6);
+}
+
+.styled:hover {
+    background-color: rgba(255, 0, 0, 1);
+}
+
+.styled:active {
+    box-shadow: inset -2px -2px 3px rgba(255, 255, 255, .6),
+                inset 2px 2px 3px rgba(0, 0, 0, .6);
+}
+
+
+    .group{
+        text-align: center;
+    }
+    .group input{
+        margin: 0 5px 0 20px;
+    }
+    </style>
+    <meta charset="UTF-8">
 </head>
 <body>
-
-    {% if session['test']%}
-    <h3>Bonjour {{session['test']}}, </h3>
-{% endif %}
 
 <h1 style="color: black;" align="center">
     Changez vos parametres de compte!
 </h1><br>
+
+
+<!--///////////////////////// THIS IS FOR THE DESTRUCT BUTTON //////////////////////////////////////-->
     <div class="group" align="center">
+        <form id="form2" action="/selfdestrcut"  method="post">
+        <p align="right">
+            <input class="favorite styled" id="destructbutton" name="boutondetruire" type="submit" style="right: auto" type="button" onclick="onButtonRegClick2()" value="DÃ©truire votre account ici!!!" >
+            </p>
+        </form>
+
+
+<!--//////////////////////////////////// THIS IS FOR THE REST (AKA CHANGER PARAMETRES ///////////////////////////////-->
         <form id="form" action="/done"  method="post">
+
             <p>
                 <input type="checkbox" id="name" onclick="myFunction(this)">
                 <span class="checkboxtext" style="color:black">Votre nom au complet</span>
@@ -65,7 +103,7 @@ display: inline;
                 <input type="checkbox" id="adresse" onclick = myFunction2(this)>
                 <label for="adresse" class="checkmark" style="color: black">Votre adresse</label><br>
             </p>
-            <input type="text" id="textforadresse" name="adresse" placeholder="Entrez la nouvelle adresse" required autofocus size="50" disabled="disabled"></input><br><br>
+            <input type="text" id="textforadresse"  name="adresse" placeholder="Entrez la nouvelle adresse" required autofocus size="50" disabled="disabled"></input><br><br>
             <p>
                 <input type="checkbox" id="telephone" onclick = "myFunction3(this)">
                 <label for="telephone" class="checkmark" style="color: black">Votre telephone</label><br>
@@ -85,8 +123,8 @@ display: inline;
                 <label for="motdepasse" class="checkmark" style="color: black">Votre mot de passe</label><br>
             </p>
             <input type="password" id="textforpassword" name="motdepasse" placeholder="Entrez le nouveau mot de passe" required autofocus size="50" disabled="disabled"> </input> <br><br>
-                 <div class="col-md-3" align="center">
-                <button class="btn btn-md btn-primary btn-block" type="submit" onclick="onButtonRegClick()"> Confirmer </button>
+                <div class="submit" align="center">
+                <button class="boutton" type="submit" onclick="onButtonRegClick()"> Confirmer </button>
         </div>
         </form>
     </div>
@@ -136,10 +174,10 @@ display: inline;
     $(function onButtonRegClick(){
     $('button').click(function(){
         var name = $('#textforname').val();
-        var email = $('#textforemail').val();
+        // var email = $('#textforemail').val();
         var adresse = $('#textforadresse').val();
         var telephone = $('#textforphone').val();
-        var motdepasse = $('#textforphone').val();
+        var motdepasse = $('#textforpassword').val();
 
         $.ajax({
             url: '/done',
@@ -154,6 +192,25 @@ display: inline;
         });
     });
 });
+
+    $(function onButtonRegClick2(){
+    $('button').click(function(){
+        var boutondetruire = $('#destructbutton').val(true);
+        $.ajax({
+            url: '/selfdestrcut',
+            data: $('form').serialize(),
+            type: 'POST',
+            success: function onButtonRegClick2(response){
+                console.log(response);
+            },
+            error: function onButtonRegClick2(error){
+                console.log(error);
+            }
+        });
+    });
+});
+
+
 
 </script>
 

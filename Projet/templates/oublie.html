@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+{% extends "base.html" %}
+{% block title %}BD-SHOP{% endblock %}
+
+{% block content %}
+<style>
+    body,html{
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            background: #e74c3c !important;
+        }
+
+    .boutton{
+        background-color: aqua;
+    }
+
+.center {
+  text-align: center;
+}
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <p style="text-align: center; font-size: xx-large"> Changer votre mot de passe ici!</p> <br><br><br>
+</head>
+<body>
+
+<div class="center">
+
+    <form id="form" action="/almostdone"  method="post">
+
+        <input class="center-block" type="text" id="textforemail" name="email" placeholder="Entrez le nouveau email" required autofocus size="50" > </input><br><br>
+        <br>
+        <input class="center-block" type="password" id="textforpassword" name="motdepasse" placeholder="Entrez le nouveau mot de passe" required autofocus size="50" > </input> <br><br>
+        <br>
+        <button class="boutton" type="submit" onclick="onButtonRegClick()"> Confirmer </button>
+    </form>
+</div>
+<script>
+    $(function onButtonRegClick(){
+    $('button').click(function(){
+        var email = $('#textforemail').val();
+        var motdepasse = $('#textforpassword').val();
+        $.ajax({
+            url: '/almostdone',
+            data: $('form').serialize(),
+            type: 'POST',
+            success: function onButtonRegClick(response){
+                console.log(response);
+            },
+            error: function onButtonRegClick(error){
+                console.log(error);
+            }
+        });
+    });
+});
+</script>
+</body>
+
+</html>
+{% endblock %}

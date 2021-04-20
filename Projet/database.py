@@ -148,11 +148,16 @@ def getIDclient(email):
 
 # ///// SETTER ///////
 
-def changeSettings(nom, adresse, telephone, email, password, id_client):
-    hashed_password = hash_password(password)
+def changerSettings(nom, adresse, telephone, password, id_client):
     request = """update client C
-                 set  C.nom_complet = '{}', C.email = '{}', C.telephone = '{}', C.adresse = '{}', C.mot_de_passe = "{}"
-                 where C.ID_client = '{}'""".format(nom, email, telephone, adresse, hashed_password, id_client)
+                 set  C.nom_complet = '{}', C.telephone = '{}', C.adresse = '{}', C.mot_de_passe = "{}"
+                 where C.ID_client = '{}'""".format(nom, telephone, adresse, password, id_client)
+    cursor.execute(request)
+
+
+
+def self_destruct(id_client):
+    request = """DELETE FROM client WHERE ID_client = '{}'""".format(id_client)
     cursor.execute(request)
 
 # print(getIDclient("reda@hotmail.com"))   #receives client email and returns client ID

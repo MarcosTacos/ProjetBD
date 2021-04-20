@@ -4,7 +4,7 @@ from flask_login import LoginManager, UserMixin, login_required, login_user, log
 import pymysql.cursors
 
 from database import insert_user, check_user_password, listOfEmails, verifyEmail, verifyPassword, getUserName, getname, \
-    getphone, getemail, getadresse, getpassword, changeSettings, getIDclient
+    getphone, getemail, getadresse, getpassword, changerSettings, getIDclient, self_destruct
 
 connection = pymysql.connect(host='localhost',
                              user='root',
@@ -151,21 +151,24 @@ def delivery():
 @app.route('/done', methods=['POST'])
 def changer_parametres():
     if request.method == "POST":
+        idclient = getIDclient(session['email'])
+        #client_id = (session['test'])
+        #print(client_id)
         name = request.form.get('name', None)
         if name is None:
-            name = getname(session['id'])
+            name = getname(idclient)
         email = request.form.get('email', None)
         if email is None:
-            email = getemail(session['id'])
+            email = getemail(idclient)
         telephone = request.form.get('telephone', None)
         if telephone is None:
-            telephone = getphone(session['id'])
+            telephone = getphone(idclient)
         adresse = request.form.get('adresse', None)
         if adresse is None:
-            adresse = getadresse(session['id'])
+            adresse = getadresse(idclient)
         motdepasse = request.form.get('motdepasse', None)
         if motdepasse is None:
-            motdepasse = getpassword(session['id'])
+            motdepasse = getpassword(idclient)
         try:
             if not verifyEmail(email):
                 flash("Votre email {} est invalide".format(email), "warning")
@@ -175,7 +178,7 @@ def changer_parametres():
                 return redirect(url_for('settings'))
             else:
                 flash("Vous avec changé vos parametres avec succes", "success")
-                changeSettings(name, adresse, telephone, email, motdepasse, (session['id']))
+                changeSettings(name, adresse, telephone, email, motdepasse, idclient)
                 return redirect(url_for('settings'))
         finally:
             cursor.close()
@@ -353,7 +356,7 @@ def sell():
     cur3.close()
 
     return render_template('Index.html', message="Product information uploaded")
-# //////////////////////////  ERROR HANDLERS ///////////////////////
+# ////////////////////////// Listed Items ///////////////////////
 
 listed = {}
 
@@ -370,6 +373,47 @@ def listed():
     cur.close()
     print(listed)
     return render_template('listed.html', listed=listed)
+
+# ////////////////////////// Mot de passe oublie + Detruire ///////////////////////
+
+@app.route('/forgot')
+def motdepasseoublie():
+    return render_template('oublie.html')
+
+
+@app.route('/almostdone', methods=['POST'])
+def affichermotdepasseOublier():
+    if request.method == 'POST':
+        email = request.form['email']
+        motdepasse = request.form['motdepasse']
+        try:
+            if email not in listOfEmails():
+                flash(
+                    "Le email: '{}' n'est pas dans notre base de données, vérifiez si vous n'avez pas fait d'erreur ".format(
+                        email), "danger")
+                return redirect(url_for('motdepasseoublie'))
+
+            elif verifyPassword(motdepasse):
+                flash("Votre mot de passe est invalide", "warning")
+                return redirect(url_for('motdepasseoublie'))
+            else:
+                flash("Un email à été envoyé à votre adresse courriel!", "warning")
+                return redirect(url_for('login'))
+        finally:
+            cursor.close()
+
+
+@app.route('/selfdestrcut', methods=['POST'])
+def detruire_client():
+    if request.method == 'POST':
+
+        # TODO aller chercher encore une fois le id_client
+
+        idclient = getIDclient(session['email'])
+        self_destruct(idclient)
+        flash("Vous venez de détruire votre account", "warning")
+        session.pop('email', None)
+        return redirect(url_for('login'))
 
 # //////////////////////////  ERROR HANDLERS ///////////////////////
 
