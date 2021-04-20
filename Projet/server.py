@@ -4,7 +4,7 @@ from flask_login import LoginManager, UserMixin, login_required, login_user, log
 import pymysql.cursors
 
 from database import insert_user, check_user_password, listOfEmails, verifyEmail, verifyPassword, getUserName, getname, \
-    getphone, getemail, getadresse, getpassword, changerSettings, getIDclient, self_destruct
+    getphone, getemail, getadresse, getpassword, changerSettings, getIDclient, self_destruct, hash_password
 
 connection = pymysql.connect(host='localhost',
                              user='root',
@@ -16,7 +16,7 @@ connection = pymysql.connect(host='localhost',
 cursor = connection.cursor()
 
 app = Flask(__name__)
-app.secret_key = 'la grosse torche'
+app.secret_key = 'bd-shop'
 CORS(app)
 
 # flask-login
@@ -104,6 +104,11 @@ def registerUser():
 
 @app.route("/")
 def index():
+    return render_template("promos.html")
+
+
+@app.route("/index")
+def recherche():
     return render_template("index.html")
 
 
@@ -124,7 +129,7 @@ def cart():
     except KeyError:
         return render_template('403.html')
     else:
-        return render_template('products.html')
+        return render_template('cart.html')
 
 
 @app.route('/promotions')
@@ -178,8 +183,9 @@ def changer_parametres():
                 return redirect(url_for('settings'))
             else:
                 flash("Vous avec changé vos parametres avec succes", "success")
-                changeSettings(name, adresse, telephone, email, motdepasse, idclient)
-                return redirect(url_for('settings'))
+                motdepasse = hash_password(motdepasse)
+                changerSettings(name, adresse, telephone, email, motdepasse, idclient)
+                return redirect(url_for('promotions'))
         finally:
             cursor.close()
 
