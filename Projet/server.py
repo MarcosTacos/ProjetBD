@@ -393,7 +393,7 @@ def affichermotdepasseOublier():
                         email), "danger")
                 return redirect(url_for('motdepasseoublie'))
 
-            elif verifyPassword(motdepasse):
+            elif verifyPassword(motdepasse)[0] is not True:
                 flash("Votre mot de passe est invalide", "warning")
                 return redirect(url_for('motdepasseoublie'))
             else:

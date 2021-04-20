@@ -1,11 +1,22 @@
-<body style="background-color:#ACA79A">
+{% extends "base.html" %}
+{% block title %}BD-SHOP{% endblock %}
+
+{% block content %}
+
+<html>
+<head>
+<title> Produits </title>
+
+<header>
+
+
+</header>
+<body style="background-color: #e74c3c">
 	<main>
 	<link rel="stylesheet" href="static/fichierstyle.css">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
 table, th, td {
-  border: 2px solid #233F5C;
+  border: 3px solid white;
   align-items:center;
   justify-content:center;
 
@@ -17,14 +28,14 @@ th{
 }
 
 td{
-	color:#233F5C;
+	color: white;
 
 }
 
 </style>
 
         {% if message %}
-<div style="color: #264662; align-items: center">  {{ message }}</div>
+<div style="color: white; align-items: center">  {{ message }}</div>
         {% endif %}
 
 <form action="description" method="get">
@@ -44,20 +55,18 @@ td{
 
     <tbody style="horizontal-align:center">
 
-    {% for produit in listed %}
+    {% for i in listed %}
             <tr style="height:100px">
 
-                <td width="20%" style="color: #264662; font-weight: bold ">{{produit[0]}}</td>
-                <td width="10%">{{produit[1]}}</td>
-                <td width="10%">{{produit[2]}}</td>
-				<td width="5%">{{produit[4]}}</td>
-                <td width="5%">{{produit[3]}}</td>
-                <td width="20%" ><img src="{{produit[5]}}"></td>
+                <td width="20%" style="color: black; font-weight: bold ">{{i[0]}}</td>
+                <td width="10%">{{i[1]}}</td>
+                <td width="10%">{{i[2]}}</td>
+				<td width="5%">{{i[4]}}</td>
+                <td width="5%">{{i[3]}}</td>
+                <td width="20%" ><img src="{{i[5]}}"></td>
             </tr>
         {% endfor %}
     </tbody>
 </table>
 </form>
-
-</main>
-</body>
+{% endblock %}

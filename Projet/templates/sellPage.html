@@ -6,30 +6,21 @@
 
 <html>
 <head>
-<title>MY MARKET</title>
-<link rel="stylesheet" href="static/fichierstyle.css">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static',    filename='/loginCSS.css') }}">
-	<link rel="stylesheet" href="{{ url_for('static',    filename='/fichierstyle.css') }}">
-        <link rel="stylesheet" type="text/css" href="{{ url_for('static',    filename='/philCSS.css') }}">
-
-
+<title>Mettre en vente un item</title>
+<link rel="stylesheet" href="../static/vente.css" type="text/css" />
 </head>
 <body>
 <div style="background-color: #e74c3c">
 <div class="limiter">
-    <div class="container-login">
+    <div class="inputsection">
         <form action = "sellPage" method = "post">
         <div class="wrap-login p-t-50 p-b-90">
 					<span class="login100-form-title p-b-51">
 						Vendre un produit
                     </span>
-            <div>
+            <div id="cliquerpourimage">
             <input type="file"  accept="image/*" name="image" id="file"  onchange="loadFile(event)" style="display: none;">
-            <p><label class=labelImage for="file" style="cursor: pointer;">Appuyer pour charger une image</label></p>
+            <p><label class=labelImage for="file" style="cursor: pointer;">Cliquez ici pour charger une image</label></p>
             <img src="" id="output" width="200" />
             <script>
                 var loadFile = function(event) {
