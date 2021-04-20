@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+{% block title %}BD-SHOP{% endblock %}
+
+{% block content %}
+
+
+<html>
+<head>
+<title>MY MARKET</title>
+<link rel="stylesheet" href="static/fichierstyle.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',    filename='/loginCSS.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static',    filename='/fichierstyle.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static',    filename='/philCSS.css') }}">
+
+
+</head>
+<body>
+<div style="background-color: #e74c3c">
+<div class="limiter">
+    <div class="container-login">
+        <form action = "sellPage" method = "post">
+        <div class="wrap-login p-t-50 p-b-90">
+					<span class="login100-form-title p-b-51">
+						Vendre un produit
+                    </span>
+            <div>
+            <input type="file"  accept="image/*" name="image" id="file"  onchange="loadFile(event)" style="display: none;">
+            <p><label class=labelImage for="file" style="cursor: pointer;">Appuyer pour charger une image</label></p>
+            <img src="" id="output" width="200" />
+            <script>
+                var loadFile = function(event) {
+                    var image = document.getElementById('output');
+                    image.src = URL.createObjectURL(event.target.files[0]);
+                };
+            </script>
+            </div>
+            <label class="labelUser">Nom du produit</label>
+            <div class="wrap-input validate-input m-b-16">
+                <input id="itemName" class="input" type="text" name="itemName" minlength="10" maxlength="50" placeholder="Entrer le nom du produit">
+                <span class="focus-input"></span>
+            </div>
+
+            <label class="labelUser">Genre</label>
+            <div class="wrap-input validate-input m-b-16">
+                <input id="itemGenre" class="input" type="text"  name="itemGenre" maxlength="5" placeholder="Entrer le genre du produit">
+                <span class="focus-input"></span>
+            </div>
+
+            <label class="labelUser">Taille</label>
+            <div class="wrap-input validate-input m-b-16">
+                <input id="itemSize" class="input" type="text"  name="itemSize" maxlength="20" placeholder="Entrer la grandeur du produit">
+                <span class="focus-input"></span>
+            </div>
+            <label class="labelUser">Description détaillée</label>
+            <div class="wrap-input validate-input m-b-16">
+                <textarea id="itemDescription" class="input" type="text" cols="40" name="itemDescription" minlength="40"  maxlength="200"  placeholder="Décrire le produit"></textarea>
+                <span class="focus-input"></span>
+            </div>
+
+            <label class="labelUser">Quantité</label>
+            <div class="wrap-input validate-input m-b-16">
+                <input id="itemQty" class="input" type="text" name="itemQty" placeholder="Entrer la quantité" maxlength="3"
+                       onkeypress = "return (event.charCode > 47 && event.charCode < 58)">
+                <span class="focus-input"></span>
+            </div>
+
+            <label class="labelUser">Prix</label>
+            <div class="wrap-input validate-input m-b-16">
+                <input id="itemPrice" class="input" type="text" name="itemPrice" placeholder="Entrer le prix du produit" maxlength="10"
+                       onkeypress = "return (event.charCode > 47 && event.charCode < 58)">
+                <span class="focus-input"></span>
+            </div>
+
+
+            <div class="container-login-form-btn m-t-17">
+                      <input class="login-form-btn" type="submit" value="Publier">
+            </div>
+
+
+
+        </div>
+        </form>
+        </div>
+    </div>
+    </div>
+<div id="dropDownSelect1"></div>
+
+</body>
+</html>
+{% endblock %}

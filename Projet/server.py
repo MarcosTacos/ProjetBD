@@ -8,8 +8,8 @@ from database import insert_user, check_user_password, listOfEmails, verifyEmail
 
 connection = pymysql.connect(host='localhost',
                              user='root',
-                             password='sterilite27',
-                             db='test',
+                             password='12345',
+                             db='testprojet',
                              autocommit=True,
                              charset='utf8mb4',
                              cursorclass=pymysql.cursors.DictCursor)
@@ -53,7 +53,7 @@ def loginUser():
                 flash('Email ou mot de passe incorrect', "warning")
                 return redirect(url_for('login'))
             else:
-                session['email'] = True
+                # session['email'] = True
                 session['test'] = nom
                 flash('Vous nous avez manque {}, consultez nos nouvelles offres ! '.format(nom), "success")
                 user = User(email)
@@ -93,7 +93,7 @@ def registerUser():
                 return redirect(url_for('signIn'))
             else:
                 insert_user(nom, email, telephone, adresse, password)
-                session['email'] = True
+                # session['email'] = True
                 flash("Bienvenue a bord {} !".format(nom), "success")
                 user = User(email)
                 login_user(user)
@@ -300,6 +300,76 @@ def array_merge(first_array, second_array):
         return first_array.union(second_array)
     return False
 
+
+# ////////////////////////// VENDRE ///////////////////////
+
+char_invalide = ["{", "}", "&", "?", "%", "!"]
+element_form = ['itemName', 'itemGenre', 'itemSize', 'itemDescription', 'itemQty', 'itemPrice', 'image']
+
+@app.route("/sellPage", methods=['GET'])
+def indexVente():
+     return render_template('sellPage.html')
+
+
+@app.route('/sellPage', methods=['POST'])
+def sell():
+
+    details = request.form
+
+    for field in element_form:
+         if details[field] == '':
+             return render_template('sellPage.html', message="Tous les champs doivent être rempli et ne doivent pas contenir de caractère spéciaux")
+
+
+    if int(details['itemPrice']) < 0 or int(details['itemQty']) < 0:
+        return render_template('sellPage.html', message="Le prix et la quantité doivent être plus grand que 0")
+
+
+    nomProd = details['itemName']
+    genreProd = details['itemGenre']
+    sizeProd = details['itemSize']
+    descriptionProd = details['itemDescription']
+    qteProd = details['itemQty']
+    prixProd = details['itemPrice']
+    image = details['image']
+    cur = connection.cursor()
+    cur2 = connection.cursor()
+    cmd = ("INSERT INTO Product(name, genre, taille, description, quantite_produit, price, image) VALUES(%s, %s, %s, %s,%s,%s,%s)")
+    cur.execute(cmd, (nomProd, genreProd, sizeProd, descriptionProd, qteProd, prixProd, image))
+    connection.commit()
+    cur2.execute("SELECT DISTINCT last_insert_id(120) FROM Product")
+    id_ = 120
+
+
+
+    cur.close()
+    print("ICIIIII")
+    cur3= connection.cursor()
+    cmd2 = ('INSERT INTO Vendeur(id_produit_vendeur, id_utilisateur_vendeur) VALUES(%s,%s)')
+    id_current_user = getIDclient(session['email'])
+    cur3.execute(cmd2, (id_,id_current_user))
+    connection.commit()
+    cur2.close()
+    cur3.close()
+
+    return render_template('Index.html', message="Product information uploaded")
+# //////////////////////////  ERROR HANDLERS ///////////////////////
+
+listed = {}
+
+@app.route('/listed', methods = ['GET','POST'])
+def listed():
+    id_ = getIDclient(session['email'])
+    cur = connection.cursor()
+    cmd = ('SELECT P.name, P.genre, P.taille, P.quantite_produit, P.price, P.image  FROM Vendeur V, Product P WHERE V.id_utilisateur_vendeur = %s AND P.ID_produit = V.id_produit_vendeur;')
+    cur.execute(cmd, id_)
+    connection.commit()
+
+    global listed
+    listed = cur.fetchall()
+    cur.close()
+    print(listed)
+    return render_template('listed.html', listed=listed)
 
 # //////////////////////////  ERROR HANDLERS ///////////////////////
 
