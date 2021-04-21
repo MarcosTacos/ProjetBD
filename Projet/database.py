@@ -8,7 +8,7 @@ import re
 connection = pymysql.connect(host='localhost',
                              user='root',
                              password='12345',
-                             db='testprojet',
+                             db='PJT2',
                              autocommit=True,
                              charset='utf8mb4',
                              cursorclass=pymysql.cursors.DictCursor)
@@ -51,19 +51,6 @@ def listOfEmails():
         for i in cursor.fetchall():
             liste.append(i['email'])
     return liste
-
-# def valCreds(email, password):
-#     if email in listOfEmails():
-#         flash('Votre email {} est deja existant'.format(email), "warning")
-#         return False
-#     elif not verifyEmail(email):
-#         flash("Votre email {} est invalide".format(email), "warning")
-#         return False
-#     elif not verifyPassword(password)[0]:
-#         flash(verifyPassword(password)[1][0], verifyPassword(password)[1][1])
-#         return False
-#     else:
-#         return True
 
 
 def verifyPhone(phone):
@@ -149,6 +136,8 @@ def getIDclient(email):
 # ///// SETTER ///////
 
 def changerSettings(nom, adresse, telephone ,email ,password, id_client):
+    if len(password) < 20:
+        password = hash_password(password)
     request = """update client C
                  set  C.nom_complet = '{}', C.email = '{}' ,C.telephone = '{}', C.adresse = '{}', C.mot_de_passe = "{}"
                  where C.ID_client = '{}'""".format(nom, email ,telephone, adresse, password, id_client)
@@ -160,17 +149,5 @@ def self_destruct(id_client):
     request = """DELETE FROM client WHERE ID_client = '{}'""".format(id_client)
     cursor.execute(request)
 
-# print(getIDclient("reda@hotmail.com"))   #receives client email and returns client ID
 
-# pwd = "password123"
-# hashed = hash_password(pwd)               #  encrypts password
-# print(verify_password(pwd, hashed))      # returns true if match
-#
-#
-# email = "test@mail.com"
-# password = "ethop"
-# insert_user(email, password)  #inserts into DB email and hashed password
-#
-
-# print(check_user_password(email, password))   # prints true if password and dictionary value hashed_password match
 

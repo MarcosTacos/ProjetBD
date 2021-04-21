@@ -4,12 +4,12 @@ from flask_login import LoginManager, UserMixin, login_required, login_user, log
 import pymysql.cursors
 
 from database import insert_user, check_user_password, listOfEmails, verifyEmail, verifyPassword, getUserName, getname, \
-    getphone, getemail, getadresse, getpassword, changerSettings, getIDclient, self_destruct, hash_password
+    getphone, getemail, getadresse, getpassword, changerSettings, getIDclient, self_destruct, hash_password, verifyPhone
 
 connection = pymysql.connect(host='localhost',
                              user='root',
                              password='12345',
-                             db='testprojet',
+                             db='PJT2',
                              autocommit=True,
                              charset='utf8mb4',
                              cursorclass=pymysql.cursors.DictCursor)
@@ -87,6 +87,9 @@ def registerUser():
                 return redirect(url_for('signIn'))
             elif not verifyEmail(email):
                 flash("Votre email {} est invalide".format(email), "warning")
+                return redirect(url_for('signIn'))
+            elif not verifyPhone(telephone):
+                flash("Votre telephone {} est invalide".format(telephone), "warning")
                 return redirect(url_for('signIn'))
             elif not verifyPassword(password)[0]:
                 flash(verifyPassword(password)[1][0], verifyPassword(password)[1][1])
@@ -181,9 +184,11 @@ def changer_parametres():
             elif not verifyPassword(motdepasse)[0]:
                 flash(verifyPassword(motdepasse)[1][0], verifyPassword(motdepasse)[1][1])
                 return redirect(url_for('settings'))
+            elif not verifyPhone(telephone):
+                flash("le numero {} n'est pas dans une forme valide".format(telephone), "warning")
+                return redirect(url_for('settings'))
             else:
                 flash("Vous avec changé vos parametres avec succes", "success")
-                motdepasse = hash_password(motdepasse)
                 changerSettings(name, adresse, telephone, email, motdepasse, idclient)
                 return redirect(url_for('promotions'))
         finally:
@@ -350,17 +355,6 @@ def sell():
     id_ = 120
 
 
-
-    cur.close()
-    print("ICIIIII")
-    cur3= connection.cursor()
-    cmd2 = ('INSERT INTO Vendeur(id_produit_vendeur, id_utilisateur_vendeur) VALUES(%s,%s)')
-    id_current_user = getIDclient(session['email'])
-    cur3.execute(cmd2, (id_,id_current_user))
-    connection.commit()
-    cur2.close()
-    cur3.close()
-
     return render_template('Index.html', message="Product information uploaded")
 # ////////////////////////// Listed Items ///////////////////////
 
@@ -418,7 +412,7 @@ def detruire_client():
         idclient = getIDclient(session['email'])
         self_destruct(idclient)
         flash("Vous venez de détruire votre account", "warning")
-        session.pop('email', None)
+        session.pop('test', None)
         return redirect(url_for('login'))
 
 # //////////////////////////  ERROR HANDLERS ///////////////////////

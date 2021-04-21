@@ -1,5 +1,5 @@
 CREATE DATABASE PJT2;
-USE test;
+USE PJT2;
 
 
 
@@ -106,6 +106,15 @@ CREATE TABLE IF NOT EXISTS Livraison
   FOREIGN KEY (ID_paiement) REFERENCES Paiement(ID_paiement) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
+-- # ID_livraison, ID_commande et ID_paiement sont uniques ici
+CREATE TABLE Vendeur(
+	id_vendeur integer auto_increment,
+	id_produit_vendeur integer,
+	id_utilisateur_vendeur integer,
+	PRIMARY KEY(id_vendeur),
+	FOREIGN KEY(id_utilisateur_vendeur) REFERENCES Client(ID_client) ON DELETE CASCADE,
+	FOREIGN KEY(id_produit_vendeur) REFERENCES Product(ID_produit) ON DELETE CASCADE
+);
 
 -- # Pour supprimer les tables pour les recreer apres une correction, supprimez dans l'ordre suivant.
 
